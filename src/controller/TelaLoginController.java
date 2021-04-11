@@ -13,8 +13,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -29,6 +31,8 @@ public class TelaLoginController implements Initializable {
     private PasswordField edtSenha;
     @FXML
     private Button btnEntrar;
+    @FXML
+    private Label lblCadastro;
 
     /**
      * Initializes the controller class.
@@ -50,8 +54,11 @@ public class TelaLoginController implements Initializable {
             return;
         }
         
-        
-        
+    }
+
+    @FXML
+    private void lblCadastroClick(MouseEvent event) {       
+        ProjetoPOO.TrocaTela("cadastroGerente");
     }
     
 }

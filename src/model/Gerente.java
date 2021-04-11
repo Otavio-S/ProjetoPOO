@@ -11,8 +11,8 @@ package model;
  */
 public class Gerente extends Funcionario {
     
-    public Gerente(int idGerente, String nome, String CPF, float salario, int cargaHoraria, String cargo, Data dataNascimento) {
-        super(idGerente, nome, CPF, salario, cargaHoraria, cargo, dataNascimento);
+    public Gerente(int idGerente, String nome, String CPF, float salario, int cargaHoraria, Data dataNascimento) {
+        super(idGerente, nome, CPF, salario, cargaHoraria, "Gerente", dataNascimento);
     }
     
 }

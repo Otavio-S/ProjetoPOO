@@ -20,6 +20,7 @@ public class ProjetoPOO extends Application {
     
     private static Stage stage;
     private static Scene cenaPrincipal;
+    private static Scene cenaCadastroGerente;
     
     
     @Override
@@ -31,6 +32,10 @@ public class ProjetoPOO extends Application {
         raiz = FXMLLoader.load(getClass().getResource("/view/TelaLogin.fxml"));
         cenaPrincipal = new Scene(raiz);
         
+        Parent telaCadastroGerente;
+        telaCadastroGerente = FXMLLoader.load(getClass().getResource("/view/TelaCadastroGerente.fxml"));
+        cenaCadastroGerente = new Scene(telaCadastroGerente);
+        
         primaryStage.setScene(cenaPrincipal);
         primaryStage.show();
     }
@@ -40,6 +45,8 @@ public class ProjetoPOO extends Application {
             case "login":
                 stage.setScene(cenaPrincipal);
                 break;
+            case "cadastroGerente":
+                stage.setScene(cenaCadastroGerente);
         }
     }
 
