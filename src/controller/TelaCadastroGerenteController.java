@@ -38,6 +38,8 @@ public class TelaCadastroGerenteController implements Initializable {
     private TextField edtSenha;
     @FXML
     private Button btnCadastrar;
+    @FXML
+    private Button btnVoltar;
 
     /**
      * Initializes the controller class.
@@ -60,6 +62,11 @@ public class TelaCadastroGerenteController implements Initializable {
         
         
         
+    }
+
+    @FXML
+    private void btnVoltarClick(ActionEvent event) {
+        ProjetoPOO.TrocaTela("login");
     }
     
 }

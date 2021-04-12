@@ -9,27 +9,25 @@ package model;
  *
  * @author Otavio
  */
-public class Funcionario {
-    private int idFuncionario;
+public abstract class Funcionario {
+    private int id;
     private String nome;
     private String CPF;
     private float salario;
     private int cargaHoraria;
-    private String cargo;
     private Data dataNascimento;
 
-    public Funcionario(int idFuncionario, String nome, String CPF, float salario, int cargaHoraria, String cargo, Data dataNascimento) {
-        this.idFuncionario = idFuncionario;
+    public Funcionario(int idFuncionario, String nome, String CPF, float salario, int cargaHoraria, Data dataNascimento) {
+        this.id = idFuncionario;
         this.nome = nome;
         this.CPF = CPF;
         this.salario = salario;
         this.cargaHoraria = cargaHoraria;
-        this.cargo = cargo;
         this.dataNascimento = dataNascimento;
     }
     
     public int getId() {
-        return idFuncionario;
+        return id;
     }
 
     public String getNome() {
@@ -48,12 +46,15 @@ public class Funcionario {
         return cargaHoraria;
     }
 
-    public String getCargo() {
-        return cargo;
-    }
-
     public Data getDataNascimento() {
-        return dataNascimento;
+        return dataNascimento.clone();
     }
 
+    @Override
+    public String toString() {
+        return "Funcionario{" + "idFuncionario=" + id + 
+                ", nome=" + nome + ", CPF=" + CPF + ", salario=" + salario + 
+                ", cargaHoraria=" + cargaHoraria + ", dataNascimento=" + dataNascimento + '}';
+    }
+    
 }

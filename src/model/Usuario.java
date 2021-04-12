@@ -29,9 +29,14 @@ public class Usuario {
     }
 
     public Data getDataNascimento() {
-        return dataNascimento;
+        return dataNascimento.clone();
     }
-    
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "idusuario=" + idusuario + ", nome=" 
+                + nome + ", dataNascimento=" + dataNascimento + '}';
+    }    
     
     
 }

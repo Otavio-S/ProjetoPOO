@@ -31,13 +31,19 @@ public class Prontuario {
     }
 
     public Data getData() {
-        return data;
+        return data.clone();
     }
 
     public String getDescricao() {
         return descricao;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Prontuario{" + "idProntuario=" + idProntuario + 
+                ", idUsuario=" + idUsuario + ", data=" + data + 
+                ", descricao=" + descricao + '}';
+    }    
     
     
 }

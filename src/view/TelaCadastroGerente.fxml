@@ -45,6 +45,7 @@
             <TextField fx:id="edtSenha" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>
       </GridPane>
-      <Button fx:id="btnCadastrar" layoutX="540.0" layoutY="576.0" mnemonicParsing="false" onAction="#btnCadastrarClick" prefHeight="45.0" prefWidth="120.0" text="Cadastrar" />
+      <Button fx:id="btnCadastrar" layoutX="620.0" layoutY="576.0" mnemonicParsing="false" onAction="#btnCadastrarClick" prefHeight="45.0" prefWidth="120.0" text="Cadastrar" />
+      <Button fx:id="btnVoltar" layoutX="460.0" layoutY="576.0" mnemonicParsing="false" onAction="#btnVoltarClick" prefHeight="45.0" prefWidth="120.0" text="Voltar" />
    </children>
 </AnchorPane>

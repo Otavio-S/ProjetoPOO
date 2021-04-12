@@ -9,7 +9,7 @@ package model;
  *
  * @author Otavio
  */
-public class Data {
+public class Data implements Cloneable {
     
     private int dia;
     private int mes;
@@ -31,6 +31,20 @@ public class Data {
 
     public int getAno() {
         return ano;
+    }
+    
+    @Override
+    public Data clone() {
+        try {
+            return (Data) super.clone();
+        } catch (CloneNotSupportedException e) {
+            return (Data) this;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "Data{" + "dia=" + dia + ", mes=" + mes + ", ano=" + ano + '}';
     }
     
     public static boolean isEqual(Data d1, Data d2) {
