@@ -18,8 +18,8 @@ public class Coordenador extends Funcionario {
     
     //private QuadroHorario quadroHorario;
     
-    public Coordenador(int idFuncionario, String nome, String CPF, float salario, int cargaHoraria, Data dataNascimento, String tipo) {
-        super(idFuncionario, nome, CPF, salario, cargaHoraria, dataNascimento);
+    public Coordenador(int idFuncionario, String nome, String CPF, float salario, int cargaHoraria, Data dataNascimento, String tipo, String senha) {
+        super(idFuncionario, nome, CPF, salario, cargaHoraria, dataNascimento, senha);
         this.tipo = tipo;
     }
     

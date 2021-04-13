@@ -9,7 +9,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaCadastroGerenteController">
    <children>
-      <Label layoutX="408.0" layoutY="94.0" text="Cadastro de Gerente">
+      <Label fx:id="lblTitulo" layoutX="408.0" layoutY="94.0" text="Cadastro de Gerente">
          <font>
             <Font name="System Bold" size="40.0" />
          </font>
@@ -45,7 +45,8 @@
             <TextField fx:id="edtSenha" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>
       </GridPane>
-      <Button fx:id="btnCadastrar" layoutX="620.0" layoutY="576.0" mnemonicParsing="false" onAction="#btnCadastrarClick" prefHeight="45.0" prefWidth="120.0" text="Cadastrar" />
-      <Button fx:id="btnVoltar" layoutX="460.0" layoutY="576.0" mnemonicParsing="false" onAction="#btnVoltarClick" prefHeight="45.0" prefWidth="120.0" text="Voltar" />
+      <Button fx:id="btnCadastrar" layoutX="676.0" layoutY="576.0" mnemonicParsing="false" onAction="#btnCadastrarClick" prefHeight="45.0" prefWidth="120.0" text="Cadastrar" />
+      <Button fx:id="btnVoltar" layoutX="404.0" layoutY="576.0" mnemonicParsing="false" onAction="#btnVoltarClick" prefHeight="45.0" prefWidth="120.0" text="Voltar" />
+      <Button fx:id="btnCarregar" layoutX="540.0" layoutY="576.0" mnemonicParsing="false" onAction="#btnCarregarClick" prefHeight="45.0" prefWidth="120.0" text="Carregar" />
    </children>
 </AnchorPane>

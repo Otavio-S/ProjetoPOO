@@ -5,10 +5,16 @@
  */
 package dao;
 
+import java.util.List;
+import model.Usuario;
+
 /**
  *
  * @author Otavio
  */
 public class UsuarioDAO {
+    
+    private static List<Usuario> usuarios;
+    
     
 }

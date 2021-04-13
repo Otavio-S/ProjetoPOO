@@ -5,6 +5,7 @@
  */
 package model;
 
+import dao.CoordenadorDAO;
 import java.util.List;
 
 /**
@@ -12,33 +13,26 @@ import java.util.List;
  * @author Otavio
  */
 public class Gerente extends Funcionario {
-    
-    private List<Coordenador> coordenadores;
-    
-    public Gerente(int idGerente, String nome, String CPF, float salario, int cargaHoraria, Data dataNascimento) {
-        super(idGerente, nome, CPF, salario, cargaHoraria, dataNascimento);
+        
+    public Gerente(int idGerente, String nome, String CPF, float salario, int cargaHoraria, Data dataNascimento, String senha) {
+        super(idGerente, nome, CPF, salario, cargaHoraria, dataNascimento, senha);
     }
     
     public boolean novoCoordenador(Coordenador c) {
         if(this.isUnique(c.getId())) {
-            this.coordenadores.add(c);
+            CoordenadorDAO.inserirCoordenador(c);
             return true;
         }
         return false;
     }
     
     private boolean isUnique(int id) {
-        for(Coordenador c : this.coordenadores) {
+        for(Coordenador c : CoordenadorDAO.listarCoordenadores()) {
             if(c.getId() == id) {
                 return false;
             }
         }
         return true;
-    }
-    
-    @Override
-    public String toString() {
-        return super.toString() + "Gerente{" + "coordenadores=" + coordenadores + '}';
     }
     
 }

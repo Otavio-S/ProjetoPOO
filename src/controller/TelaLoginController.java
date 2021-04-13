@@ -5,6 +5,9 @@
  */
 package controller;
 
+import dao.ColaboradorDAO;
+import dao.CoordenadorDAO;
+import dao.GerenteDAO;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -40,7 +43,12 @@ public class TelaLoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
+    
+    private void clearAll() {
+        this.edtID.clear();
+        this.edtSenha.clear();
+    }
 
     @FXML
     private void btnEntrarClick(ActionEvent event) {
@@ -54,11 +62,38 @@ public class TelaLoginController implements Initializable {
             return;
         }
         
+        if(GerenteDAO.verificarAcesso(Integer.parseInt(this.edtID.getText()),
+                this.edtSenha.getText())) {
+            System.out.println("Sucesso Gerente!");
+            ProjetoPOO.TrocaTela("inicialGerente");
+            this.clearAll();
+            this.lblCadastro.setVisible(false);
+            return;
+        }
+        
+        if(CoordenadorDAO.verificarAcesso(Integer.parseInt(this.edtID.getText()),
+                this.edtSenha.getText())) {
+            System.out.println("Sucesso Coordenador!");
+            this.clearAll();
+            return;
+        }
+        
+        if(ColaboradorDAO.verificarAcesso(Integer.parseInt(this.edtID.getText()),
+                this.edtSenha.getText())) {
+            System.out.println("Sucesso Colaborador!");
+            this.clearAll();
+            return;
+        }
+        
+        System.out.println("Erro ou Usuário não cadastrado!");
+        
     }
 
     @FXML
-    private void lblCadastroClick(MouseEvent event) {       
+    private void lblCadastroClick(MouseEvent event) {      
+        this.clearAll();
         ProjetoPOO.TrocaTela("cadastroGerente");
+        this.lblCadastro.setVisible(false);
     }
     
 }

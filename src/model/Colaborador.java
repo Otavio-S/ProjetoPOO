@@ -11,8 +11,8 @@ package model;
  */
 public class Colaborador extends Funcionario {
     
-    public Colaborador(int idFuncionario, String nome, String CPF, float salario, int cargaHoraria, Data dataNascimento) {
-        super(idFuncionario, nome, CPF, salario, cargaHoraria, dataNascimento);
+    public Colaborador(int idFuncionario, String nome, String CPF, float salario, int cargaHoraria, Data dataNascimento, String senha) {
+        super(idFuncionario, nome, CPF, salario, cargaHoraria, dataNascimento, senha);
     }
     
 }

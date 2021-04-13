@@ -5,10 +5,16 @@
  */
 package dao;
 
+import java.util.List;
+import model.Prontuario;
+
 /**
  *
  * @author Otavio
  */
 public class ProntuarioDAO {
+    
+    private static List<Prontuario> prontuarios;
+    
     
 }

@@ -16,14 +16,16 @@ public abstract class Funcionario {
     private float salario;
     private int cargaHoraria;
     private Data dataNascimento;
+    private String senhaAcesso;
 
-    public Funcionario(int idFuncionario, String nome, String CPF, float salario, int cargaHoraria, Data dataNascimento) {
+    public Funcionario(int idFuncionario, String nome, String CPF, float salario, int cargaHoraria, Data dataNascimento, String senha) {
         this.id = idFuncionario;
         this.nome = nome;
         this.CPF = CPF;
         this.salario = salario;
         this.cargaHoraria = cargaHoraria;
         this.dataNascimento = dataNascimento;
+        this.senhaAcesso = senha;
     }
     
     public int getId() {
@@ -48,6 +50,18 @@ public abstract class Funcionario {
 
     public Data getDataNascimento() {
         return dataNascimento.clone();
+    }
+
+    public String getSenhaAcesso() {
+        return senhaAcesso;
+    }
+    
+    public void atualizarSalario(float novoSalario) {
+        this.salario = novoSalario;
+    }
+    
+    public void alterarSenha(String novaSenha) {
+        this.senhaAcesso = novaSenha;
     }
 
     @Override
