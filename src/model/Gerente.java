@@ -14,25 +14,8 @@ import java.util.List;
  */
 public class Gerente extends Funcionario {
         
-    public Gerente(int idGerente, String nome, String CPF, float salario, int cargaHoraria, Data dataNascimento, String senha) {
+    public Gerente(String idGerente, String nome, String CPF, float salario, int cargaHoraria, Data dataNascimento, String senha) {
         super(idGerente, nome, CPF, salario, cargaHoraria, dataNascimento, senha);
-    }
-    
-    public boolean novoCoordenador(Coordenador c) {
-        if(this.isUnique(c.getId())) {
-            CoordenadorDAO.inserirCoordenador(c);
-            return true;
-        }
-        return false;
-    }
-    
-    private boolean isUnique(int id) {
-        for(Coordenador c : CoordenadorDAO.listarCoordenadores()) {
-            if(c.getId() == id) {
-                return false;
-            }
-        }
-        return true;
     }
     
 }

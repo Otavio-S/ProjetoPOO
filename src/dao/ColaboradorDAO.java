@@ -23,18 +23,18 @@ public class ColaboradorDAO {
         return true;
     }
     
-    private static boolean idExists(int id) {
+    private static boolean idExists(String id) {
         for(Colaborador c : colaboradores) {
-            if(c.getId() == id) {
+            if(c.getId().equals(id)) {
                 return true;
             }
         }
         return false;
     }
     
-    public static void atualizarSalarioColaborador(int idColaborador, float salario) {
+    public static void atualizarSalarioColaborador(String idColaborador, float salario) {
         for(Colaborador c : colaboradores) {
-            if(c.getId() == idColaborador) {
+            if(c.getId().equals(idColaborador)) {
                 c.atualizarSalario(salario);
             }
         }
@@ -49,9 +49,9 @@ public class ColaboradorDAO {
         return null;
     }
     
-    private static boolean removerColaborador(int idColaborador) {
+    private static boolean removerColaborador(String idColaborador) {
         for(Colaborador c : colaboradores) {
-            if(c.getId() == idColaborador) {
+            if(c.getId().equals(idColaborador)) {
                 colaboradores.remove(c);
                 return true;
             }
@@ -59,7 +59,7 @@ public class ColaboradorDAO {
         return false;
     }
     
-    public static boolean verificarAcesso(int id, String senha) {
+    public static boolean verificarAcesso(String id, String senha) {
         if(ColaboradorDAO.idExists(id)) {
             for(Colaborador c : colaboradores) {
                 if(c.getSenhaAcesso().equals(senha)) {

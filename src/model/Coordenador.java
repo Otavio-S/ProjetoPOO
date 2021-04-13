@@ -13,31 +13,15 @@ import java.util.List;
  */
 public class Coordenador extends Funcionario {
     
-    private String tipo;
-    private List<Colaborador> colaboradores;
+    private String local;
     
     //private QuadroHorario quadroHorario;
     
-    public Coordenador(int idFuncionario, String nome, String CPF, float salario, int cargaHoraria, Data dataNascimento, String tipo, String senha) {
+    public Coordenador(String idFuncionario, String nome, String CPF, 
+            float salario, int cargaHoraria, Data dataNascimento, 
+            String local, String senha) {
         super(idFuncionario, nome, CPF, salario, cargaHoraria, dataNascimento, senha);
-        this.tipo = tipo;
-    }
-    
-    public boolean novoColaborador(Colaborador c) {
-        if(this.isUnique(c.getId())) {
-            this.colaboradores.add(c);
-            return true;
-        }
-        return false;
-    }
-    
-    private boolean isUnique(int id) {
-        for(Colaborador c : this.colaboradores) {
-            if(c.getId() == id) {
-                return false;
-            }
-        }
-        return true;
+        this.local = local;
     }
     
     public void verQuadroHorario() {

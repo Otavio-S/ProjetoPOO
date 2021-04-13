@@ -18,7 +18,7 @@ public class GerenteDAO {
     
     private static Gerente gerente;
         
-    public static void inserirGerente(int idGerente, String nome, String CPF, 
+    public static void inserirGerente(String idGerente, String nome, String CPF, 
             float salario, int cargaHoraria, int dia, int mes, int ano, String senha) {
         
         Data d = new Data(dia, mes, ano);

@@ -23,18 +23,18 @@ public class CoordenadorDAO {
         return true;
     }
     
-    private static boolean idExists(int id) {
+    private static boolean idExists(String id) {
         for(Coordenador c : coordenadores) {
-            if(c.getId() == id) {
+            if(c.getId().equals(id)) {
                 return true;
             }
         }
         return false;
     }
     
-    public static void atualizarSalarioCoordenador(int idCoordenador, float salario) {
+    public static void atualizarSalarioCoordenador(String idCoordenador, float salario) {
         for(Coordenador c : coordenadores) {
-            if(c.getId() == idCoordenador) {
+            if(c.getId().equals(idCoordenador)) {
                 c.atualizarSalario(salario);
             }
         }
@@ -49,9 +49,9 @@ public class CoordenadorDAO {
         return null;
     }
     
-    private static boolean removerCoordenador(int idCoordenador) {
+    private static boolean removerCoordenador(String idCoordenador) {
         for(Coordenador c : coordenadores) {
-            if(c.getId() == idCoordenador) {
+            if(c.getId().equals(idCoordenador)) {
                 coordenadores.remove(c);
                 return true;
             }
@@ -59,7 +59,7 @@ public class CoordenadorDAO {
         return false;
     }
     
-    public static boolean verificarAcesso(int id, String senha) {
+    public static boolean verificarAcesso(String id, String senha) {
         if(CoordenadorDAO.idExists(id)) {
             for(Coordenador c : coordenadores) {
                 if(c.getSenhaAcesso().equals(senha)) {

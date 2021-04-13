@@ -80,7 +80,7 @@ public class TelaCadastroGerenteController implements Initializable {
             return;
         }
         
-        GerenteDAO.inserirGerente(Integer.parseInt(this.edtID.getText()), 
+        GerenteDAO.inserirGerente(this.edtID.getText(), 
                 this.edtNome.getText(),
                 this.edtCPF.getText(),
                 Float.parseFloat(this.edtSalario.getText()),

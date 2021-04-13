@@ -10,7 +10,7 @@ package model;
  * @author Otavio
  */
 public abstract class Funcionario {
-    private int id;
+    private String id;
     private String nome;
     private String CPF;
     private float salario;
@@ -18,7 +18,7 @@ public abstract class Funcionario {
     private Data dataNascimento;
     private String senhaAcesso;
 
-    public Funcionario(int idFuncionario, String nome, String CPF, float salario, int cargaHoraria, Data dataNascimento, String senha) {
+    public Funcionario(String idFuncionario, String nome, String CPF, float salario, int cargaHoraria, Data dataNascimento, String senha) {
         this.id = idFuncionario;
         this.nome = nome;
         this.CPF = CPF;
@@ -28,7 +28,7 @@ public abstract class Funcionario {
         this.senhaAcesso = senha;
     }
     
-    public int getId() {
+    public String getId() {
         return id;
     }
 

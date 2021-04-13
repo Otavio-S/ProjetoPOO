@@ -48,6 +48,7 @@ public class TelaGerenteController implements Initializable {
 
     @FXML
     private void btnGerenciarFuncionariosClick(ActionEvent event) {
+        ProjetoPOO.TrocaTela("gerenciarFuncionarios");
     }
 
     @FXML

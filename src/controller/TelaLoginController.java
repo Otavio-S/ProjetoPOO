@@ -71,14 +71,14 @@ public class TelaLoginController implements Initializable {
             return;
         }
         
-        if(CoordenadorDAO.verificarAcesso(Integer.parseInt(this.edtID.getText()),
+        if(CoordenadorDAO.verificarAcesso(this.edtID.getText(),
                 this.edtSenha.getText())) {
             System.out.println("Sucesso Coordenador!");
             this.clearAll();
             return;
         }
         
-        if(ColaboradorDAO.verificarAcesso(Integer.parseInt(this.edtID.getText()),
+        if(ColaboradorDAO.verificarAcesso(this.edtID.getText(),
                 this.edtSenha.getText())) {
             System.out.println("Sucesso Colaborador!");
             this.clearAll();
