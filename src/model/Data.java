@@ -44,7 +44,7 @@ public class Data implements Cloneable {
 
     @Override
     public String toString() {
-        return "Data{" + "dia=" + dia + ", mes=" + mes + ", ano=" + ano + '}';
+        return dia + "/" + mes + "/" + ano;
     }
     
     public static boolean isEqual(Data d1, Data d2) {

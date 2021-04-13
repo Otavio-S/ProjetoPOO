@@ -14,14 +14,23 @@ import java.util.List;
 public class Coordenador extends Funcionario {
     
     private String local;
-    
+    private String tipo;
     //private QuadroHorario quadroHorario;
     
     public Coordenador(String idFuncionario, String nome, String CPF, 
             float salario, int cargaHoraria, Data dataNascimento, 
-            String local, String senha) {
+            String local, String senha, String tipo) {
         super(idFuncionario, nome, CPF, salario, cargaHoraria, dataNascimento, senha);
         this.local = local;
+        this.tipo = tipo;
+    }
+
+    public String getLocal() {
+        return local;
+    }
+
+    public String getTipo() {
+        return tipo;
     }
     
     public void verQuadroHorario() {
@@ -30,6 +39,11 @@ public class Coordenador extends Funcionario {
     
     public void editarQuadroHorario() {
         
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "Coordenador{" + "local=" + local + ", tipo=" + tipo + '}';
     }
     
     

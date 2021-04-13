@@ -30,9 +30,9 @@ public class GerenteDAO {
         gerente.atualizarSalario(salario);
     }
     
-    public static boolean verificarAcesso(int id, String senha) {
+    public static boolean verificarAcesso(String id, String senha) {
         if(gerente == null) return false;
-        if(gerente.getSenhaAcesso().equals(senha)) return true;
+        if(gerente.getSenhaAcesso().equals(senha) && gerente.getId().equals(id)) return true;
         return false;
     }
     

@@ -37,6 +37,5 @@
             <PasswordField fx:id="edtSenha" promptText="Digite sua senha" GridPane.columnIndex="1" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Label fx:id="lblCadastro" layoutX="543.0" layoutY="551.0" onMouseClicked="#lblCadastroClick" text="Realizar Cadastro" textFill="#0700c2" underline="true" />
    </children>
 </AnchorPane>

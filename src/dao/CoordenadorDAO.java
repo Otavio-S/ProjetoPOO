@@ -7,7 +7,9 @@ package dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import model.Colaborador;
 import model.Coordenador;
+import model.Data;
 
 /**
  *
@@ -17,7 +19,13 @@ public class CoordenadorDAO {
  
     private static List<Coordenador> coordenadores = new ArrayList<>();
     
-    public static boolean inserirCoordenador(Coordenador c) {
+    public static boolean inserirCoordenador(String idFuncionario, String nome, String CPF, 
+            float salario, int cargaHoraria, int dia, int mes, int ano, 
+            String local, String senha, String tipo) {
+        
+        Data d = new Data(dia, mes, ano);
+        Coordenador c = new Coordenador(idFuncionario, nome, CPF, salario, cargaHoraria, d, local, senha, tipo);
+        
         if(idExists(c.getId())) return false;
         coordenadores.add(c);
         return true;
@@ -25,6 +33,11 @@ public class CoordenadorDAO {
     
     private static boolean idExists(String id) {
         for(Coordenador c : coordenadores) {
+            if(c.getId().equals(id)) {
+                return true;
+            }
+        }
+        for(Colaborador c : ColaboradorDAO.listarColaboradores()) {
             if(c.getId().equals(id)) {
                 return true;
             }
@@ -49,7 +62,16 @@ public class CoordenadorDAO {
         return null;
     }
     
-    private static boolean removerCoordenador(String idCoordenador) {
+    public static Coordenador pesquisaID(String id) {
+        for(Coordenador c : coordenadores) {
+            if(c.getId().equals(id)) {
+                return c;
+            }
+        }
+        return null;
+    }
+    
+    public static boolean removerCoordenador(String idCoordenador) {
         for(Coordenador c : coordenadores) {
             if(c.getId().equals(idCoordenador)) {
                 coordenadores.remove(c);
@@ -62,7 +84,7 @@ public class CoordenadorDAO {
     public static boolean verificarAcesso(String id, String senha) {
         if(CoordenadorDAO.idExists(id)) {
             for(Coordenador c : coordenadores) {
-                if(c.getSenhaAcesso().equals(senha)) {
+                if(c.getSenhaAcesso().equals(senha) && c.getId().equals(id)) {
                     return true;
                 }
             }

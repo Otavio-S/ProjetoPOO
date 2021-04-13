@@ -5,7 +5,11 @@
  */
 package controller;
 
+import dao.ColaboradorDAO;
+import dao.CoordenadorDAO;
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -14,12 +18,18 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
+import model.Colaborador;
+import model.Coordenador;
 
 /**
  * FXML Controller class
@@ -59,25 +69,47 @@ public class TelaGerenciarFuncionarioController implements Initializable {
     @FXML
     private Button btnVoltar;
     @FXML
-    private TableView<?> tableFuncionarios;
+    private TableColumn<Coordenador, String> columnID;
     @FXML
-    private TableColumn<?, ?> columnID;
+    private TableColumn<Coordenador, String> columnNome;
     @FXML
-    private TableColumn<?, ?> columnNome;
+    private TableColumn<Coordenador, String> columnCPF;
     @FXML
-    private TableColumn<?, ?> columnCPF;
+    private TableColumn<Coordenador, Float> columnSalario;
     @FXML
-    private TableColumn<?, ?> columnSalario;
+    private TableColumn<Coordenador, Integer> columnCargaHoraria;
     @FXML
-    private TableColumn<?, ?> columnCargaHoraria;
+    private TableColumn<Coordenador, String> columnDataNascimento;
     @FXML
-    private TableColumn<?, ?> columnDataNascimento;
+    private TableColumn<Coordenador, String> columnTipo;
     @FXML
-    private TableColumn<?, ?> columnTipo;
+    private TableColumn<Coordenador, String> columnLocal;
     @FXML
-    private TableColumn<?, ?> columnLocal;
+    private TableColumn<Coordenador, String> columnSenha;
     @FXML
-    private TableColumn<?, ?> columnSenha;
+    private TableView<Coordenador> tableCoordenadores;
+    @FXML
+    private TableView<Colaborador> tableColaboradores;
+    @FXML
+    private TableColumn<Colaborador, String> columnIDCol;
+    @FXML
+    private TableColumn<Colaborador, String> columnNomeCol;
+    @FXML
+    private TableColumn<Colaborador, String> columnCPFCol;
+    @FXML
+    private TableColumn<Colaborador, Float> columnSalarioCol;
+    @FXML
+    private TableColumn<Colaborador, Integer> columnCargaHorariaCol;
+    @FXML
+    private TableColumn<Colaborador, String> columnDataNascimentoCol;
+    @FXML
+    private TableColumn<Colaborador, String> columnTipoCol;
+    @FXML
+    private TableColumn<Colaborador, String> columnLocalCol;
+    @FXML
+    private TableColumn<Colaborador, String> columnSenhaCol;
+    @FXML
+    private Button btnListarID;
 
     /**
      * Initializes the controller class.
@@ -86,35 +118,246 @@ public class TelaGerenciarFuncionarioController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         ObservableList lista;
         List options = new ArrayList<>();
-        options.add("Centro DIA");
-        options.add("Casa Lar");
+        options.add("Coordenador");
+        options.add("Colaborador");
         lista = FXCollections.observableArrayList(options);
         cbTipo.setItems(lista);
-    }    
+    
+        this.columnID.setCellValueFactory(new PropertyValueFactory<>("Id"));
+        this.columnCPF.setCellValueFactory(new PropertyValueFactory<>("CPF"));
+        this.columnCargaHoraria.setCellValueFactory(new PropertyValueFactory<>("CargaHoraria"));
+        this.columnDataNascimento.setCellValueFactory(new PropertyValueFactory<>("DataNascimentoString"));
+        this.columnLocal.setCellValueFactory(new PropertyValueFactory<>("Local"));
+        this.columnNome.setCellValueFactory(new PropertyValueFactory<>("Nome"));
+        this.columnSalario.setCellValueFactory(new PropertyValueFactory<>("Salario"));
+        this.columnSenha.setCellValueFactory(new PropertyValueFactory<>("SenhaAcesso"));
+        this.columnTipo.setCellValueFactory(new PropertyValueFactory<>("Tipo"));
+        this.columnID.setCellFactory(TextFieldTableCell.forTableColumn());
+        
+        this.columnIDCol.setCellValueFactory(new PropertyValueFactory<>("Id"));
+        this.columnCPFCol.setCellValueFactory(new PropertyValueFactory<>("CPF"));
+        this.columnCargaHorariaCol.setCellValueFactory(new PropertyValueFactory<>("CargaHoraria"));
+        this.columnDataNascimentoCol.setCellValueFactory(new PropertyValueFactory<>("DataNascimentoString"));
+        this.columnLocalCol.setCellValueFactory(new PropertyValueFactory<>("Local"));
+        this.columnNomeCol.setCellValueFactory(new PropertyValueFactory<>("Nome"));
+        this.columnSalarioCol.setCellValueFactory(new PropertyValueFactory<>("Salario"));
+        this.columnSenhaCol.setCellValueFactory(new PropertyValueFactory<>("SenhaAcesso"));
+        this.columnTipoCol.setCellValueFactory(new PropertyValueFactory<>("Tipo"));
+        this.columnIDCol.setCellFactory(TextFieldTableCell.forTableColumn());
+        
+        this.carregaTabela();
+    }
+    
+    private void carregaTabela() {
+        try {
+            this.tableColaboradores.getItems().clear();
+            this.tableCoordenadores.getItems().clear();
+        } catch (Exception erro) {
+        }
+        
+        ObservableList observableList = FXCollections.observableArrayList(CoordenadorDAO.listarCoordenadores());
+        this.tableCoordenadores.setItems(observableList);
+        ObservableList observableList2 = FXCollections.observableArrayList(ColaboradorDAO.listarColaboradores());
+        this.tableColaboradores.setItems(observableList2);
+        this.clearAll();
+    }
 
+    private void clearAll() {
+        this.edtID.clear();
+        this.edtCPF.clear();
+        this.edtNome.clear();
+        this.edtCargaHoraria.clear();
+        this.edtDataNascimento.setValue(null);
+        this.edtLocal.clear();
+        this.edtSalario.clear();
+        this.edtSenha.clear();
+        this.cbTipo.setValue(null);
+    }
+    
     @FXML
     private void btnInserirClick(ActionEvent event) {
+        if(this.edtCPF.getText().isEmpty() ||
+                this.edtCargaHoraria.getText().isEmpty() ||
+                this.edtDataNascimento.getValue() == null ||
+                this.edtID.getText().isEmpty() ||
+                this.edtLocal.getText().isEmpty() ||
+                this.edtNome.getText().isEmpty() ||
+                this.edtSalario.getText().isEmpty() ||
+                this.edtSenha.getText().isEmpty() ||
+                this.cbTipo.getValue() == null) {
+            Alert errorAlert = new Alert(Alert.AlertType.WARNING);
+            errorAlert.setTitle("Campo Vazio");
+            errorAlert.setHeaderText("Preencha todos os campos!");
+            errorAlert.showAndWait();
+            return;
+        }
+        
+        if(this.cbTipo.getValue().equals("Colaborador")) {
+            boolean res = ColaboradorDAO.inserirColaborador(this.edtID.getText(),
+                    this.edtNome.getText(),
+                    this.edtCPF.getText(),
+                    Float.valueOf(this.edtSalario.getText()),
+                    Integer.valueOf(this.edtCargaHoraria.getText()),
+                    this.edtDataNascimento.getValue().getDayOfMonth(),
+                    this.edtDataNascimento.getValue().getMonthValue(),
+                    this.edtDataNascimento.getValue().getYear(),
+                    this.edtLocal.getText(),
+                    this.edtSenha.getText(),
+                    this.cbTipo.getValue());
+            if(res) System.out.println("Sucessso Colaborador!");
+            else return;
+        } else if(this.cbTipo.getValue().equals("Coordenador")) {
+            boolean res = CoordenadorDAO.inserirCoordenador(this.edtID.getText(),
+                    this.edtNome.getText(),
+                    this.edtCPF.getText(),
+                    Float.valueOf(this.edtSalario.getText()),
+                    Integer.valueOf(this.edtCargaHoraria.getText()),
+                    this.edtDataNascimento.getValue().getDayOfMonth(),
+                    this.edtDataNascimento.getValue().getMonthValue(),
+                    this.edtDataNascimento.getValue().getYear(),
+                    this.edtLocal.getText(),
+                    this.edtSenha.getText(),
+                    this.cbTipo.getValue());
+            if(res) System.out.println("Sucessso Coordenador!");
+            else return;
+        }
+        this.carregaTabela();
     }
 
     @FXML
     private void btnAtualizarClick(ActionEvent event) {
+        if(this.edtID.getText().equals("")) {
+            this.clearAll();
+            Alert errorAlert = new Alert(Alert.AlertType.WARNING);
+            errorAlert.setTitle("Campo Vazio");
+            errorAlert.setHeaderText("Digite um ID!");
+            errorAlert.showAndWait();
+            return;
+        }
+        if(this.edtSalario.getText().equals("")) {
+            this.clearAll();
+            Alert errorAlert = new Alert(Alert.AlertType.WARNING);
+            errorAlert.setTitle("Campo Vazio");
+            errorAlert.setHeaderText("Digite o novo salário!");
+            errorAlert.showAndWait();
+            return;
+        }
+        CoordenadorDAO.atualizarSalarioCoordenador(this.edtID.getText(), Float.valueOf(this.edtSalario.getText()));
+        ColaboradorDAO.atualizarSalarioColaborador(this.edtID.getText(), Float.valueOf(this.edtSalario.getText()));
+        this.carregaTabela();
     }
 
     @FXML
     private void btnExcluirClick(ActionEvent event) {
+        if(this.edtID.getText().equals("")) {
+            this.clearAll();
+            Alert errorAlert = new Alert(Alert.AlertType.WARNING);
+            errorAlert.setTitle("Campo Vazio");
+            errorAlert.setHeaderText("Digite um ID!");
+            errorAlert.showAndWait();
+            return;
+        }
+        
+        ColaboradorDAO.removerColaborador(this.edtID.getText());
+        CoordenadorDAO.removerCoordenador(this.edtID.getText());
+        
+        this.carregaTabela();
     }
 
     @FXML
     private void btnListarTodosClick(ActionEvent event) {
+        this.carregaTabela();
+    }
+    
+    @FXML
+    private void btnListarIDClick(ActionEvent event) {
+        if(this.edtID.getText().equals("")) {
+            this.clearAll();
+            Alert errorAlert = new Alert(Alert.AlertType.WARNING);
+            errorAlert.setTitle("Campo Vazio");
+            errorAlert.setHeaderText("Digite um ID!");
+            errorAlert.showAndWait();
+            return;
+        }
+        
+        try {
+            this.tableColaboradores.getItems().clear();
+            this.tableCoordenadores.getItems().clear();
+        } catch (Exception e) {
+        }
+        
+        ObservableList observable = FXCollections.observableArrayList(ColaboradorDAO.pesquisaID(this.edtID.getText()));
+        this.tableColaboradores.setItems(observable);
+        observable = FXCollections.observableArrayList(CoordenadorDAO.pesquisaID(this.edtID.getText()));
+        this.tableCoordenadores.setItems(observable);
+        
     }
 
     @FXML
     private void btnListarNomeClick(ActionEvent event) {
+        if(this.edtNome.getText().equals("")) {
+            this.clearAll();
+            Alert errorAlert = new Alert(Alert.AlertType.WARNING);
+            errorAlert.setTitle("Campo Vazio");
+            errorAlert.setHeaderText("Digite um nome!");
+            errorAlert.showAndWait();
+            return;
+        }
+        
+        try {
+            this.tableColaboradores.getItems().clear();
+            this.tableCoordenadores.getItems().clear();
+        } catch (Exception e) {
+        }
+        
+        ObservableList observable = FXCollections.observableArrayList(ColaboradorDAO.pesquisa(this.edtNome.getText()));
+        this.tableColaboradores.setItems(observable);
+        observable = FXCollections.observableArrayList(CoordenadorDAO.pesquisa(this.edtNome.getText()));
+        this.tableCoordenadores.setItems(observable);
+        
     }
 
+    @FXML
+    private void tableCoordenadoresClick(MouseEvent event) {
+        Coordenador coord = this.tableCoordenadores.getSelectionModel().getSelectedItem();
+        int selectedIndex = this.tableCoordenadores.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            this.edtCPF.setText(coord.getCPF());
+            this.edtCargaHoraria.setText(String.valueOf(coord.getCargaHoraria()));
+            this.edtDataNascimento.setValue(LocalDate.of(coord.getDataNascimento().getAno(),
+                    coord.getDataNascimento().getMes(),
+                    coord.getDataNascimento().getDia()));
+            this.edtID.setText(coord.getId());
+            this.edtLocal.setText(coord.getLocal());
+            this.edtNome.setText(coord.getNome());
+            this.edtSalario.setText(String.valueOf(coord.getSalario()));
+            this.edtSenha.setText(coord.getSenhaAcesso());
+            this.cbTipo.setValue(coord.getTipo());
+        }
+    }
+
+    @FXML
+    private void tableColaboradoresClick(MouseEvent event) {
+        Colaborador colab = this.tableColaboradores.getSelectionModel().getSelectedItem();
+        int selectedIndex = this.tableColaboradores.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            this.edtCPF.setText(colab.getCPF());
+            this.edtCargaHoraria.setText(String.valueOf(colab.getCargaHoraria()));
+            this.edtDataNascimento.setValue(LocalDate.of(colab.getDataNascimento().getAno(),
+                    colab.getDataNascimento().getMes(),
+                    colab.getDataNascimento().getDia()));
+            this.edtID.setText(colab.getId());
+            this.edtLocal.setText(colab.getLocal());
+            this.edtNome.setText(colab.getNome());
+            this.edtSalario.setText(String.valueOf(colab.getSalario()));
+            this.edtSenha.setText(colab.getSenhaAcesso());       
+            this.cbTipo.setValue(colab.getTipo());    
+        }
+    }
+    
     @FXML
     private void btnVoltarClick(ActionEvent event) {
         ProjetoPOO.TrocaTela("inicialGerente");
     }
-    
+
 }

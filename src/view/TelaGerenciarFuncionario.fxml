@@ -52,12 +52,12 @@
          </children>
       </GridPane>
       <Button fx:id="btnInserir" layoutX="124.0" layoutY="608.0" mnemonicParsing="false" onAction="#btnInserirClick" prefWidth="100.0" text="Inserir" />
-      <Button fx:id="btnAtualizar" layoutX="280.0" layoutY="608.0" mnemonicParsing="false" onAction="#btnAtualizarClick" prefWidth="100.0" text="Atualizar" />
+      <Button fx:id="btnAtualizar" layoutX="255.0" layoutY="608.0" mnemonicParsing="false" onAction="#btnAtualizarClick" prefWidth="150.0" text="Atualizar Salário" />
       <Button fx:id="btnExcluir" layoutX="436.0" layoutY="608.0" mnemonicParsing="false" onAction="#btnExcluirClick" prefWidth="100.0" text="Excluir" />
-      <Button fx:id="btnListarTodos" layoutX="827.0" layoutY="608.0" mnemonicParsing="false" onAction="#btnListarTodosClick" prefWidth="200.0" text="Listar Todos" />
-      <Button fx:id="btnListarNome" layoutX="1194.0" layoutY="608.0" mnemonicParsing="false" onAction="#btnListarNomeClick" prefWidth="200.0" text="Listar por Nome" />
+      <Button fx:id="btnListarTodos" layoutX="765.0" layoutY="608.0" mnemonicParsing="false" onAction="#btnListarTodosClick" prefWidth="200.0" text="Listar Todos" />
+      <Button fx:id="btnListarNome" layoutX="1261.0" layoutY="608.0" mnemonicParsing="false" onAction="#btnListarNomeClick" prefWidth="200.0" text="Listar por Nome" />
       <Button fx:id="btnVoltar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnVoltarClick" prefHeight="30.0" prefWidth="150.0" text="Voltar" />
-      <TableView fx:id="tableFuncionarios" layoutX="650.0" layoutY="158.0" prefHeight="411.0" prefWidth="920.0">
+      <TableView fx:id="tableCoordenadores" layoutX="650.0" layoutY="158.0" onMousePressed="#tableCoordenadoresClick" prefHeight="185.0" prefWidth="925.0">
         <columns>
           <TableColumn fx:id="columnID" prefWidth="70.0" text="ID" />
           <TableColumn fx:id="columnNome" prefWidth="100.0" text="Nome" />
@@ -70,5 +70,19 @@
             <TableColumn fx:id="columnSenha" prefWidth="100.0" text="Senha" />
         </columns>
       </TableView>
+      <TableView fx:id="tableColaboradores" layoutX="650.0" layoutY="344.0" onMousePressed="#tableColaboradoresClick" prefHeight="230.0" prefWidth="925.0">
+         <columns>
+            <TableColumn fx:id="columnIDCol" prefWidth="70.0" text="ID" />
+            <TableColumn fx:id="columnNomeCol" prefWidth="100.0" text="Nome" />
+            <TableColumn fx:id="columnCPFCol" prefWidth="100.0" text="CPF" />
+            <TableColumn fx:id="columnSalarioCol" prefWidth="100.0" text="Salário" />
+            <TableColumn fx:id="columnCargaHorariaCol" prefWidth="120.0" text="Carga Horária" />
+            <TableColumn fx:id="columnDataNascimentoCol" prefWidth="130.0" text="Data Nascimento" />
+            <TableColumn fx:id="columnTipoCol" prefWidth="100.0" text="Tipo" />
+            <TableColumn fx:id="columnLocalCol" prefWidth="100.0" text="Local" />
+            <TableColumn fx:id="columnSenhaCol" prefWidth="100.0" text="Senha" />
+         </columns>
+      </TableView>
+      <Button fx:id="btnListarID" layoutX="1014.0" layoutY="608.0" mnemonicParsing="false" onAction="#btnListarIDClick" prefWidth="200.0" text="Listar por ID" />
    </children>
 </AnchorPane>

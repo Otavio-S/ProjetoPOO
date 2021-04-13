@@ -8,6 +8,8 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 import model.Colaborador;
+import model.Coordenador;
+import model.Data;
 
 /**
  *
@@ -17,7 +19,13 @@ public class ColaboradorDAO {
     
     private static List<Colaborador> colaboradores = new ArrayList<>();
     
-    public static boolean inserirColaborador(Colaborador c) {
+    public static boolean inserirColaborador(String idFuncionario, String nome, 
+            String CPF, float salario, int cargaHoraria, 
+            int dia, int mes, int ano, String local, String senha, String tipo) {
+        
+        Data d = new Data(dia, mes, ano);
+        Colaborador c = new Colaborador(idFuncionario, nome, CPF, salario, cargaHoraria, d, local, senha, tipo);
+        
         if(idExists(c.getId())) return false;
         colaboradores.add(c);
         return true;
@@ -25,6 +33,11 @@ public class ColaboradorDAO {
     
     private static boolean idExists(String id) {
         for(Colaborador c : colaboradores) {
+            if(c.getId().equals(id)) {
+                return true;
+            }
+        }
+        for(Coordenador c : CoordenadorDAO.listarCoordenadores()) {
             if(c.getId().equals(id)) {
                 return true;
             }
@@ -49,7 +62,16 @@ public class ColaboradorDAO {
         return null;
     }
     
-    private static boolean removerColaborador(String idColaborador) {
+    public static Colaborador pesquisaID(String id) {
+        for(Colaborador c : colaboradores) {
+            if(c.getId().equals(id)) {
+                return c;
+            }
+        }
+        return null;
+    }
+    
+    public static boolean removerColaborador(String idColaborador) {
         for(Colaborador c : colaboradores) {
             if(c.getId().equals(idColaborador)) {
                 colaboradores.remove(c);
@@ -62,7 +84,7 @@ public class ColaboradorDAO {
     public static boolean verificarAcesso(String id, String senha) {
         if(ColaboradorDAO.idExists(id)) {
             for(Colaborador c : colaboradores) {
-                if(c.getSenhaAcesso().equals(senha)) {
+                if(c.getSenhaAcesso().equals(senha) && c.getId().equals(id)) {
                     return true;
                 }
             }

@@ -86,7 +86,7 @@ public class TelaCadastroGerenteController implements Initializable {
                 Float.parseFloat(this.edtSalario.getText()),
                 Integer.parseInt(this.edtCargaHoraria.getText()), 
                 this.edtDataNascimento.getValue().getDayOfMonth(), 
-                this.edtDataNascimento.getValue().getMonth().getValue()+1,
+                this.edtDataNascimento.getValue().getMonth().getValue(),
                 this.edtDataNascimento.getValue().getYear(),
                 this.edtSenha.getText());
         
@@ -114,7 +114,7 @@ public class TelaCadastroGerenteController implements Initializable {
         this.edtSenha.setText(GerenteDAO.verGerente().getSenhaAcesso());
         this.edtDataNascimento.setValue(LocalDate.of(
                 GerenteDAO.verGerente().getDataNascimento().getAno(), 
-                GerenteDAO.verGerente().getDataNascimento().getMes()-1,
+                GerenteDAO.verGerente().getDataNascimento().getMes(),
                 GerenteDAO.verGerente().getDataNascimento().getDia()));
         
     }

@@ -45,7 +45,7 @@ public class ProjetoPOO extends Application {
         telaGerenciarFuncionarios = FXMLLoader.load(getClass().getResource("/view/TelaGerenciarFuncionario.fxml"));
         cenaGerenciarFuncionarios = new Scene(telaGerenciarFuncionarios);
         
-        primaryStage.setScene(cenaPrincipal);
+        primaryStage.setScene(cenaCadastroGerente);
         primaryStage.show();
     }
     
@@ -53,15 +53,19 @@ public class ProjetoPOO extends Application {
         switch (nomeCena) {
             case "login":
                 stage.setScene(cenaPrincipal);
+                stage.centerOnScreen();
                 break;
             case "cadastroGerente":
                 stage.setScene(cenaCadastroGerente);
+                stage.centerOnScreen();
                 break;
             case "inicialGerente":
                 stage.setScene(cenaInicialGerente);
+                stage.centerOnScreen();
                 break;
             case "gerenciarFuncionarios":
                 stage.setScene(cenaGerenciarFuncionarios);
+                stage.centerOnScreen();
                 break;
             
         }

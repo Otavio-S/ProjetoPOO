@@ -34,8 +34,6 @@ public class TelaLoginController implements Initializable {
     private PasswordField edtSenha;
     @FXML
     private Button btnEntrar;
-    @FXML
-    private Label lblCadastro;
 
     /**
      * Initializes the controller class.
@@ -62,12 +60,11 @@ public class TelaLoginController implements Initializable {
             return;
         }
         
-        if(GerenteDAO.verificarAcesso(Integer.parseInt(this.edtID.getText()),
+        if(GerenteDAO.verificarAcesso(this.edtID.getText(),
                 this.edtSenha.getText())) {
             System.out.println("Sucesso Gerente!");
             ProjetoPOO.TrocaTela("inicialGerente");
             this.clearAll();
-            this.lblCadastro.setVisible(false);
             return;
         }
         
@@ -89,11 +86,9 @@ public class TelaLoginController implements Initializable {
         
     }
 
-    @FXML
     private void lblCadastroClick(MouseEvent event) {      
         this.clearAll();
         ProjetoPOO.TrocaTela("cadastroGerente");
-        this.lblCadastro.setVisible(false);
     }
     
 }

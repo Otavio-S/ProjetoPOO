@@ -51,6 +51,10 @@ public abstract class Funcionario {
     public Data getDataNascimento() {
         return dataNascimento.clone();
     }
+    
+    public String getDataNascimentoString() {
+        return dataNascimento.clone().toString();
+    }
 
     public String getSenhaAcesso() {
         return senhaAcesso;
