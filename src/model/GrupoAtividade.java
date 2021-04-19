@@ -14,14 +14,13 @@ public class GrupoAtividade {
     private Colaborador funcionarioResponsavel;
     
     public GrupoAtividade(int idGrupo,String nomeAtividade, String duracao, String horaInicio, DiaSemana diaSemana,
-                           String descricaoAtividade, UsuarioDAO listaUsuarios,
+                           String descricaoAtividade,
                             Colaborador funcionarioResponsavel){
         this.descricaoGrupo = descricaoAtividade;
         this.nomeGrupo = nomeAtividade;
         this.duracao = duracao;
         this.diaSemana = diaSemana;
         this.horaInicio = horaInicio;
-        this.listaUsuarios = listaUsuarios;
         this.funcionarioResponsavel = funcionarioResponsavel; 
         this.idGrupo = idGrupo;
     }

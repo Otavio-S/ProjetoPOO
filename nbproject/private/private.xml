@@ -17,8 +17,9 @@
             <file>file:/D:/Documentos/Graduação/Programação%20Orientada%20a%20Objetos/ProjetoPOO/src/dao/ProntuarioDAO.java</file>
             <file>file:/D:/Documentos/Graduação/Programação%20Orientada%20a%20Objetos/ProjetoPOO/src/controller/TelaLoginController.java</file>
             <file>file:/D:/Documentos/Graduação/Programação%20Orientada%20a%20Objetos/ProjetoPOO/src/model/Data.java</file>
-            <file>file:/D:/Documentos/Graduação/Programação%20Orientada%20a%20Objetos/ProjetoPOO/src/model/Funcionario.java</file>
+            <file>file:/D:/Documentos/Graduação/Programação%20Orientada%20a%20Objetos/ProjetoPOO/src/controller/TelaCadastroGerenteController.java</file>
             <file>file:/D:/Documentos/Graduação/Programação%20Orientada%20a%20Objetos/ProjetoPOO/src/model/Gerente.java</file>
+            <file>file:/D:/Documentos/Graduação/Programação%20Orientada%20a%20Objetos/ProjetoPOO/src/dao/CoordenadorDAO.java</file>
         </group>
     </open-files>
 </project-private>

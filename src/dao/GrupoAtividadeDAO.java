@@ -9,9 +9,9 @@ public class GrupoAtividadeDAO {
     private static List<GrupoAtividade> listaGrupoAtividades;
     
     public boolean novoGrupo(int idGrupo,String nomeAtividade, String duracao, String horaInicio, DiaSemana diaSemana,
-                           String descricaoAtividade, UsuarioDAO listaUsuarios,
+                            String descricaoAtividade,
                             Colaborador funcionarioResponsavel){
-        GrupoAtividade gaNovo = new GrupoAtividade(idGrupo, nomeAtividade, duracao, horaInicio, diaSemana, descricaoAtividade, listaUsuarios, funcionarioResponsavel);
+        GrupoAtividade gaNovo = new GrupoAtividade(idGrupo, nomeAtividade, duracao, horaInicio, diaSemana, descricaoAtividade, funcionarioResponsavel);
         
         if(idExists(idGrupo)){
             return false;
