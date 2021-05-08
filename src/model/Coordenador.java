@@ -5,7 +5,7 @@
  */
 package model;
 
-import java.util.List;
+import dao.QuadroHorario;
 
 /**
  *
@@ -15,7 +15,7 @@ public class Coordenador extends Funcionario {
     
     private String local;
     private String tipo;
-    //private QuadroHorario quadroHorario;
+    private QuadroHorario quadroHorario;
     
     public Coordenador(String idFuncionario, String nome, String CPF, 
             float salario, int cargaHoraria, Data dataNascimento, 

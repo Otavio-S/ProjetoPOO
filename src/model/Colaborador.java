@@ -5,6 +5,7 @@
  */
 package model;
 
+import dao.QuadroHorario;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -16,7 +17,7 @@ public class Colaborador extends Funcionario {
     
     private String local;
     private String tipo;
-    //private QuadroHorario quadroHorario;
+    private QuadroHorario quadroHorario;
     private List<Relatorio> relatorios;
     
     public Colaborador(String idFuncionario, String nome, 

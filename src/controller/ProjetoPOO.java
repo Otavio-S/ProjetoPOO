@@ -27,6 +27,14 @@ public class ProjetoPOO extends Application {
     
     private static Scene cenaInicialCoordenador;
     private static Scene cenaRequerimento;
+    private static Scene cenaVisualizarRelatorio;
+    private static Scene cenaQuadroHorario;
+    
+    private static Scene cenaInicialColaborador;
+    private static Scene cenaEscreverRelatorio;
+    
+    private static Scene cenaInicialUsuario;
+    
     
     @Override
     public void start(Stage primaryStage) throws Exception {        
@@ -57,6 +65,26 @@ public class ProjetoPOO extends Application {
         telaRequerimento = FXMLLoader.load(getClass().getResource("/view/TelaRequerimento.fxml"));
         cenaRequerimento = new Scene(telaRequerimento);
         
+        Parent telaVisualizarRelatorio;
+        telaVisualizarRelatorio = FXMLLoader.load(getClass().getResource("/view/TelaVisualizarRelatorio.fxml"));
+        cenaVisualizarRelatorio = new Scene(telaVisualizarRelatorio);
+        
+        Parent telaQuadroHorario;
+        telaQuadroHorario = FXMLLoader.load(getClass().getResource("/view/TelaQuadroHorario.fxml"));
+        cenaQuadroHorario = new Scene(telaQuadroHorario);
+        
+        Parent telaInicialColaborador;
+        telaInicialColaborador = FXMLLoader.load(getClass().getResource("/view/TelaColaborador.fxml"));
+        cenaInicialColaborador = new Scene(telaInicialColaborador);
+        
+        Parent telaEscreverRelatorio;
+        telaEscreverRelatorio = FXMLLoader.load(getClass().getResource("/view/TelaEscreverRelatorio.fxml"));
+        cenaEscreverRelatorio = new Scene(telaEscreverRelatorio);
+        
+        Parent telaInicialUsuario;
+        telaInicialUsuario = FXMLLoader.load(getClass().getResource("/view/TelaUsuario.fxml"));
+        cenaInicialUsuario = new Scene(telaInicialUsuario);
+        
         primaryStage.setScene(cenaCadastroGerente);
         primaryStage.show();
     }
@@ -86,7 +114,27 @@ public class ProjetoPOO extends Application {
             case "requerimento":
                 stage.setScene(cenaRequerimento);
                 stage.centerOnScreen();
-                break;            
+                break;
+            case "visualizarRelatorio":
+                stage.setScene(cenaVisualizarRelatorio);
+                stage.centerOnScreen();
+                break;
+            case "quadroHorario":
+                stage.setScene(cenaQuadroHorario);
+                stage.centerOnScreen();
+                break;
+            case "inicialColaborador":
+                stage.setScene(cenaInicialColaborador);
+                stage.centerOnScreen();
+                break;
+            case "escreverRelatorio":
+                stage.setScene(cenaEscreverRelatorio);
+                stage.centerOnScreen();
+                break;
+            case "inicialUsuario":
+                stage.setScene(cenaInicialUsuario);
+                stage.centerOnScreen();
+                break;   
         }
     }
 

@@ -17,16 +17,10 @@ import javafx.scene.control.Button;
  *
  * @author Otavio
  */
-public class TelaCoordenadorController implements Initializable {
+public class TelaUsuarioController implements Initializable {
 
     @FXML
     private Button btnDeslogar;
-    @FXML
-    private Button btnRequerer;
-    @FXML
-    private Button btnGerenciarHorarios;
-    @FXML
-    private Button btnVisualizar;
 
     /**
      * Initializes the controller class.
@@ -34,23 +28,8 @@ public class TelaCoordenadorController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    } 
+    }    
 
-    @FXML
-    private void btnRequererClick(ActionEvent event) {
-        ProjetoPOO.TrocaTela("requerimento");
-    }
-
-    @FXML
-    private void btnGerenciarHorariosClick(ActionEvent event) {
-        ProjetoPOO.TrocaTela("quadroHorario");
-    }
-
-    @FXML
-    private void btnVisualizarClick(ActionEvent event) {
-        ProjetoPOO.TrocaTela("visualizarRelatorio");
-    }
-    
     @FXML
     private void btnDeslogarClick(ActionEvent event) {
         ProjetoPOO.TrocaTela("login");

@@ -7,30 +7,33 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controller.TelaGerenteController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaGerenteController">
    <children>
       <Label layoutX="404.0" layoutY="104.0" text="Controle de Gerência">
          <font>
             <Font name="System Bold" size="40.0" />
          </font>
       </Label>
-      <GridPane layoutX="250.0" layoutY="238.0" prefHeight="300.0" prefWidth="700.0">
+      <GridPane layoutX="372.0" layoutY="210.0" prefHeight="417.0" prefWidth="456.0">
         <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="btnQuadro" mnemonicParsing="false" onAction="#btnQuadroClick" prefHeight="50.0" prefWidth="300.0" text="Quadro de Horários" />
-            <Button fx:id="btnGerenciarRelatorios" mnemonicParsing="false" onAction="#btnGerenciarRelatoriosClick" prefHeight="50.0" prefWidth="300.0" text="Gerenciar Relatórios" GridPane.rowIndex="1" />
-            <Button fx:id="btnGerenciarFunconarios" mnemonicParsing="false" onAction="#btnGerenciarFuncionariosClick" prefHeight="50.0" prefWidth="300.0" text="Gerenciar Funcionários" GridPane.columnIndex="1" />
-            <Button fx:id="btnTransferir" mnemonicParsing="false" onAction="#btnTransferirClick" prefHeight="50.0" prefWidth="300.0" text="Transferir Gerência" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="btnQuadro" mnemonicParsing="false" onAction="#btnQuadroClick" prefHeight="50.0" prefWidth="300.0" text="Quadro de Horários" GridPane.rowIndex="3" />
+            <Button fx:id="btnGerenciarRelatorios" mnemonicParsing="false" onAction="#btnGerenciarRelatoriosClick" prefHeight="50.0" prefWidth="300.0" text="Gerenciar Relatórios" />
+            <Button fx:id="btnGerenciarFunconarios" mnemonicParsing="false" onAction="#btnGerenciarFuncionariosClick" prefHeight="50.0" prefWidth="300.0" text="Gerenciar Funcionários" GridPane.rowIndex="2" />
+            <Button fx:id="btnTransferir" mnemonicParsing="false" onAction="#btnTransferirClick" prefHeight="50.0" prefWidth="300.0" text="Transferir Gerência" GridPane.rowIndex="4" />
+            <Button fx:id="btnGerenciarUsuarios" mnemonicParsing="false" onAction="#btnGerenciarUsuariosClick" prefHeight="50.0" prefWidth="300.0" text="Gerenciar Usuários" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <Button fx:id="btnDeslogar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnDeslogarClick" prefHeight="30.0" prefWidth="150.0" text="Deslogar" />
+      <Button fx:id="btnDeslogar" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#btnDeslogarClick" prefHeight="30.0" prefWidth="150.0" text="Deslogar" />
+      <Separator prefWidth="200.0" />
    </children>
 </AnchorPane>

@@ -79,6 +79,7 @@ public class TelaLoginController implements Initializable {
         if(ColaboradorDAO.verificarAcesso(this.edtID.getText(),
                 this.edtSenha.getText())) {
             System.out.println("Sucesso Colaborador!");
+            ProjetoPOO.TrocaTela("inicialColaborador");
             this.clearAll();
             return;
         }

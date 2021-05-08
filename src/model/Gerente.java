@@ -5,9 +5,6 @@
  */
 package model;
 
-import dao.CoordenadorDAO;
-import java.util.List;
-
 /**
  *
  * @author Otavio

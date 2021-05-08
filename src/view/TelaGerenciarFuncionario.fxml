@@ -56,7 +56,7 @@
       <Button fx:id="btnExcluir" layoutX="436.0" layoutY="608.0" mnemonicParsing="false" onAction="#btnExcluirClick" prefWidth="100.0" text="Excluir" />
       <Button fx:id="btnListarTodos" layoutX="765.0" layoutY="608.0" mnemonicParsing="false" onAction="#btnListarTodosClick" prefWidth="200.0" text="Listar Todos" />
       <Button fx:id="btnListarNome" layoutX="1261.0" layoutY="608.0" mnemonicParsing="false" onAction="#btnListarNomeClick" prefWidth="200.0" text="Listar por Nome" />
-      <Button fx:id="btnVoltar" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#btnVoltarClick" prefHeight="30.0" prefWidth="150.0" text="Voltar" />
+      <Button fx:id="btnVoltar" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#btnVoltarClick" prefHeight="30.0" prefWidth="150.0" text="Voltar" />
       <TableView fx:id="tableCoordenadores" layoutX="650.0" layoutY="158.0" onMousePressed="#tableCoordenadoresClick" prefHeight="185.0" prefWidth="925.0">
         <columns>
           <TableColumn fx:id="columnID" prefWidth="70.0" text="ID" />

@@ -10,7 +10,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controller.TelaCoordenadorController">
    <children>
-      <Button fx:id="btnDeslogar" layoutX="24.0" layoutY="24.0" mnemonicParsing="false" onAction="#btnDeslogarClick" prefHeight="30.0" prefWidth="150.0" text="Deslogar" />
+      <Button fx:id="btnDeslogar" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#btnDeslogarClick" prefHeight="30.0" prefWidth="150.0" text="Deslogar" />
       <Label layoutX="476.0" layoutY="115.0" text="Coordenador">
          <font>
             <Font name="System Bold" size="40.0" />

@@ -29,6 +29,8 @@ public class TelaGerenteController implements Initializable {
     private Button btnTransferir;
     @FXML
     private Button btnDeslogar;
+    @FXML
+    private Button btnGerenciarUsuarios;
 
     /**
      * Initializes the controller class.
@@ -59,6 +61,10 @@ public class TelaGerenteController implements Initializable {
     @FXML
     private void btnDeslogarClick(ActionEvent event) {
         ProjetoPOO.TrocaTela("login");
+    }
+
+    @FXML
+    private void btnGerenciarUsuariosClick(ActionEvent event) {
     }
     
 }
