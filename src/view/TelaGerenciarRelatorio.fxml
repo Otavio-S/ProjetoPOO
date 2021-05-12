@@ -7,15 +7,15 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaVisualizarRelatorioController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaGerenciarRelatorioController">
    <children>
       <Button fx:id="btnVoltar" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#btnVoltarClick" prefHeight="30.0" prefWidth="150.0" text="Voltar" />
-      <Label layoutX="409.0" layoutY="89.0" text="Visualizar Relatórios">
+      <Label layoutX="409.0" layoutY="89.0" text="Gerenciar Relatórios">
          <font>
             <Font name="System Bold" size="40.0" />
          </font>
       </Label>
-      <GridPane layoutX="80.0" layoutY="185.0" prefHeight="442.0" prefWidth="433.0">
+      <GridPane layoutX="80.0" layoutY="169.0" prefHeight="442.0" prefWidth="433.0">
          <children>
             <Label text="ID Relatório:" />
             <Label text="ID Usuário:" GridPane.rowIndex="1" />
@@ -47,5 +47,6 @@
          </columns>
       </TableView>
       <Button fx:id="btnListarID" layoutX="925.0" layoutY="605.0" mnemonicParsing="false" onAction="#btnListarIDClick" prefWidth="180.0" text="Listar por ID" />
+      <Button fx:id="btnAlterar" layoutX="207.0" layoutY="636.0" mnemonicParsing="false" onAction="#btnAlterarClick" prefWidth="180.0" text="Alterar Descrição" />
    </children>
 </AnchorPane>

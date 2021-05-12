@@ -24,6 +24,8 @@ public class ProjetoPOO extends Application {
     private static Scene cenaCadastroGerente;
     private static Scene cenaInicialGerente;
     private static Scene cenaGerenciarFuncionarios;
+    private static Scene cenaGerenciarUsuarios;
+    private static Scene cenaGerenciarRelatorios;
     
     private static Scene cenaInicialCoordenador;
     private static Scene cenaRequerimento;
@@ -56,6 +58,14 @@ public class ProjetoPOO extends Application {
         Parent telaGerenciarFuncionarios;
         telaGerenciarFuncionarios = FXMLLoader.load(getClass().getResource("/view/TelaGerenciarFuncionario.fxml"));
         cenaGerenciarFuncionarios = new Scene(telaGerenciarFuncionarios);
+        
+        Parent telaGerenciarUsuarios;
+        telaGerenciarUsuarios = FXMLLoader.load(getClass().getResource("/view/TelaGerenciarUsuario.fxml"));
+        cenaGerenciarUsuarios = new Scene(telaGerenciarUsuarios);
+        
+        Parent telaGerenciarRelatorios;
+        telaGerenciarRelatorios = FXMLLoader.load(getClass().getResource("/view/TelaGerenciarRelatorio.fxml"));
+        cenaGerenciarRelatorios = new Scene(telaGerenciarRelatorios);
         
         Parent telaInicialCoordenador;
         telaInicialCoordenador = FXMLLoader.load(getClass().getResource("/view/TelaCoordenador.fxml"));
@@ -105,6 +115,14 @@ public class ProjetoPOO extends Application {
                 break;
             case "gerenciarFuncionarios":
                 stage.setScene(cenaGerenciarFuncionarios);
+                stage.centerOnScreen();
+                break;
+            case "gerenciarUsuarios":
+                stage.setScene(cenaGerenciarUsuarios);
+                stage.centerOnScreen();
+                break;
+            case "gerenciarRelatorios":
+                stage.setScene(cenaGerenciarRelatorios);
                 stage.centerOnScreen();
                 break;
             case "inicialCoordenador":

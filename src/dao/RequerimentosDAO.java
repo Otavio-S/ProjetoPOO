@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.util.ArrayList;
 import java.util.List;
 import model.Requerimento;
 
@@ -14,14 +15,14 @@ import model.Requerimento;
  */
 public class RequerimentosDAO {
     
-    private static List<Requerimento> requerimentos;
+    private static List<Requerimento> requerimentos = new ArrayList<>();
     
-    public void novoRequerimento(int idCoordenador, int idColaborador, int idUsuario) {
-        Requerimento r = new Requerimento(this.getMaiorID()+1, idCoordenador, idColaborador, idUsuario);
+    public static void novoRequerimento(String idCoordenador, String idColaborador, String idUsuario) {
+        Requerimento r = new Requerimento(RequerimentosDAO.getMaiorID()+1, idCoordenador, idColaborador, idUsuario);
         requerimentos.add(r);
     }
     
-    private int getMaiorID() {
+    private static int getMaiorID() {
         int id=0;
         for(Requerimento r : requerimentos) {
             if(r.getIdRequerimento()>id) {
@@ -31,7 +32,7 @@ public class RequerimentosDAO {
         return id;
     }
     
-    public boolean alteraStatus(int idRequerimento) {
+    public static boolean alteraStatus(int idRequerimento) {
        for(Requerimento r : requerimentos) {
             if(r.getIdRequerimento() == idRequerimento) {
                 r.setStatus(0);

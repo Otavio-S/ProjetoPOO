@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
@@ -9,5 +10,23 @@
 <AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaEscreverRelatorioController">
    <children>
       <Button fx:id="btnVoltar" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#btnVoltarClick" prefHeight="30.0" prefWidth="150.0" text="Voltar" />
+      <Label layoutX="431.0" layoutY="99.0" text="Escrever Relatório">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="edtDesc" layoutX="133.0" layoutY="271.0" prefHeight="345.0" prefWidth="580.0" />
+      <TextField fx:id="edtIDUsuario" layoutX="133.0" layoutY="225.0" />
+      <Label layoutX="34.0" layoutY="230.0" text="ID Usuário:" />
+      <Label layoutX="34.0" layoutY="279.0" text="Descrição:" />
+      <Button fx:id="btnSubmeter" layoutX="348.0" layoutY="629.0" mnemonicParsing="false" onAction="#btnSubmeterClick" prefHeight="30.0" prefWidth="150.0" text="Submeter" />
+      <TableView fx:id="tableRequerimento" layoutX="770.0" layoutY="196.0" prefHeight="420.0" prefWidth="390.0">
+        <columns>
+          <TableColumn fx:id="columnReq" prefWidth="130.0" text="ID Requerimento" />
+          <TableColumn fx:id="columnCoord" prefWidth="130.0" text="ID Coordenador" />
+            <TableColumn fx:id="ColumnUser" prefWidth="130.0" text="ID Usuário" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnListar" layoutX="865.0" layoutY="636.0" mnemonicParsing="false" onAction="#btnListarClick" prefHeight="30.0" prefWidth="200.0" text="Listar Requerimentos" />
    </children>
 </AnchorPane>

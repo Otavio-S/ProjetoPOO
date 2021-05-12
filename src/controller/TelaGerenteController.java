@@ -46,6 +46,7 @@ public class TelaGerenteController implements Initializable {
 
     @FXML
     private void btnGerenciarRelatoriosClick(ActionEvent event) {
+        ProjetoPOO.TrocaTela("gerenciarRelatorios");
     }
 
     @FXML
@@ -65,6 +66,7 @@ public class TelaGerenteController implements Initializable {
 
     @FXML
     private void btnGerenciarUsuariosClick(ActionEvent event) {
+        ProjetoPOO.TrocaTela("gerenciarUsuarios");
     }
     
 }

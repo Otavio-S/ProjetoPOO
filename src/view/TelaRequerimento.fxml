@@ -33,7 +33,8 @@
             <ChoiceBox fx:id="cbUsuario" prefHeight="31.0" prefWidth="473.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <Button fx:id="btnOk" layoutX="550.0" layoutY="553.0" mnemonicParsing="false" onAction="#btnOkClick" prefWidth="100.0" text="OK" />
+      <Button fx:id="btnOk" layoutX="626.0" layoutY="526.0" mnemonicParsing="false" onAction="#btnOkClick" prefWidth="150.0" text="OK" />
       <Button fx:id="btnVoltar" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#btnVoltarClick" prefHeight="30.0" prefWidth="150.0" text="Voltar" />
+      <Button fx:id="btnCarregar" layoutX="425.0" layoutY="526.0" mnemonicParsing="false" onAction="#btnCarregarClick" prefWidth="150.0" text="Carregar Dados" />
    </children>
 </AnchorPane>

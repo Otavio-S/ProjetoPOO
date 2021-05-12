@@ -11,12 +11,12 @@ package model;
  */
 public class Requerimento {
     private int idRequerimento;
-    private int idCoordenador;
-    private int idColaborador;
-    private int idUsuario;
+    private String idCoordenador;
+    private String idColaborador;
+    private String idUsuario;
     private int status;
 
-    public Requerimento(int idRequerimento, int idCoordenador, int idColaborador, int idUsuario) {
+    public Requerimento(int idRequerimento, String idCoordenador, String idColaborador, String idUsuario) {
         this.idRequerimento = idRequerimento;
         this.idCoordenador = idCoordenador;
         this.idColaborador = idColaborador;
@@ -28,15 +28,15 @@ public class Requerimento {
         return idRequerimento;
     }
 
-    public int getIdCoordenador() {
+    public String getIdCoordenador() {
         return idCoordenador;
     }
 
-    public int getIdColaborador() {
+    public String getIdColaborador() {
         return idColaborador;
     }
 
-    public int getIdUsuario() {
+    public String getIdUsuario() {
         return idUsuario;
     }
 

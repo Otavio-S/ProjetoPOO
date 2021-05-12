@@ -31,18 +31,22 @@ import model.Relatorio;
  *
  * @author Otavio
  */
-public class TelaVisualizarRelatorioController implements Initializable {
+public class TelaGerenciarRelatorioController implements Initializable {
 
     @FXML
     private Button btnVoltar;
     @FXML
     private TextField edtID;
     @FXML
+    private TextField edtIDUsuario;
+    @FXML
     private DatePicker edtData;
     @FXML
     private TextArea edtDesc;
     @FXML
     private Button btnListarTodos;
+    @FXML
+    private TableView<Relatorio> tableRelatorios;
     @FXML
     private TableColumn<Relatorio, String> columnID;
     @FXML
@@ -54,9 +58,7 @@ public class TelaVisualizarRelatorioController implements Initializable {
     @FXML
     private Button btnListarID;
     @FXML
-    private TableView<Relatorio> tableRelatorios;
-    @FXML
-    private TextField edtIDUsuario;
+    private Button btnAlterar;
 
     /**
      * Initializes the controller class.
@@ -137,8 +139,22 @@ public class TelaVisualizarRelatorioController implements Initializable {
     }
 
     @FXML
+    private void btnAlterarClick(ActionEvent event) {
+        if(this.edtID.getText().equals("") ||
+                this.edtDesc.getText().equals("")) {
+            this.clearAll();
+            Alert errorAlert = new Alert(Alert.AlertType.WARNING);
+            errorAlert.setTitle("Campo Vazio");
+            errorAlert.setHeaderText("Preencha o ID e a Descrição!");
+            errorAlert.showAndWait();
+            return;
+        }
+        RelatoriosDAO.atualizarRelatorio(this.edtID.getText(), this.edtDesc.getText());
+    }
+
+    @FXML
     private void btnVoltarClick(ActionEvent event) {
-        ProjetoPOO.TrocaTela("inicialCoordenador");
+        ProjetoPOO.TrocaTela("inicialGerente");
     }
     
 }

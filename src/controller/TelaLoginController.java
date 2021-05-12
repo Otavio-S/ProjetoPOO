@@ -8,6 +8,7 @@ package controller;
 import dao.ColaboradorDAO;
 import dao.CoordenadorDAO;
 import dao.GerenteDAO;
+import dao.UsuarioDAO;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -80,6 +81,14 @@ public class TelaLoginController implements Initializable {
                 this.edtSenha.getText())) {
             System.out.println("Sucesso Colaborador!");
             ProjetoPOO.TrocaTela("inicialColaborador");
+            this.clearAll();
+            return;
+        }
+        
+        if(UsuarioDAO.verificarAcesso(this.edtID.getText(),
+                this.edtSenha.getText())) {
+            System.out.println("Sucesso Usuario!");
+            ProjetoPOO.TrocaTela("inicialUsuario");
             this.clearAll();
             return;
         }

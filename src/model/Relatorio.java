@@ -11,23 +11,23 @@ package model;
  */
 
 public class Relatorio {
-    private int idRelatorio;
-    private int idUsuario;
+    private String idRelatorio;
+    private String idUsuario;
     private Data data;
     private String descricao;
 
-    public Relatorio(int idRelatorio, int idUsuario, Data data, String descricao) {
+    public Relatorio(String idRelatorio, String idUsuario, Data data, String descricao) {
         this.idRelatorio = idRelatorio;
         this.idUsuario = idUsuario;
         this.data = data;
         this.descricao = descricao;
     }
 
-    public int getIdRelatorio() {
+    public String getIdRelatorio() {
         return idRelatorio;
     }
 
-    public int getIdUsuario() {
+    public String getIdUsuario() {
         return idUsuario;
     }
 
@@ -37,6 +37,10 @@ public class Relatorio {
 
     public String getDescricao() {
         return descricao;
+    }
+    
+    public void alterarDescricao(String desc) {
+        this.descricao = desc;
     }
 
     @Override

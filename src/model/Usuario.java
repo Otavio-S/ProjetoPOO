@@ -10,17 +10,21 @@ package model;
  * @author Otavio
  */
 public class Usuario {
-    private int idusuario;
+    private String idusuario;
     private String nome;
+    private String CPF;
     private Data dataNascimento;
+    private String senhaAcesso;
 
-    public Usuario(int idusuario, String nome, Data dataNascimento) {
-        this.idusuario = idusuario;
+    public Usuario(String idusuario, String nome, String CPF, Data dataNascimento, String senhaAcesso) {
+        this.idusuario = "U"+idusuario;
         this.nome = nome;
+        this.CPF = CPF;
         this.dataNascimento = dataNascimento;
+        this.senhaAcesso = senhaAcesso;
     }
 
-    public int getIdusuario() {
+    public String getIdusuario() {
         return idusuario;
     }
 
@@ -28,15 +32,30 @@ public class Usuario {
         return nome;
     }
 
+    public String getCPF() {
+        return CPF;
+    }
+
     public Data getDataNascimento() {
-        return dataNascimento.clone();
+        return dataNascimento;
+    }
+    
+    public String getDataNascimentoString() {
+        return dataNascimento.clone().toString();
+    }
+
+    public String getSenhaAcesso() {
+        return senhaAcesso;
+    }
+    
+    public void alterarSenha(String senhaAcesso) {
+        this.senhaAcesso = senhaAcesso;
     }
 
     @Override
     public String toString() {
-        return "Usuario{" + "idusuario=" + idusuario + ", nome=" 
-                + nome + ", dataNascimento=" + dataNascimento + '}';
-    }    
+        return "idusuario=" + idusuario + ", nome=" + nome + ", CPF=" + CPF + ", dataNascimento=" + dataNascimento + ", senhaAcesso=" + senhaAcesso;
+    }
     
     
 }

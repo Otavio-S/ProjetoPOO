@@ -20,7 +20,7 @@ public class Coordenador extends Funcionario {
     public Coordenador(String idFuncionario, String nome, String CPF, 
             float salario, int cargaHoraria, Data dataNascimento, 
             String local, String senha, String tipo) {
-        super(idFuncionario, nome, CPF, salario, cargaHoraria, dataNascimento, senha);
+        super("C"+idFuncionario, nome, CPF, salario, cargaHoraria, dataNascimento, senha);
         this.local = local;
         this.tipo = tipo;
     }
