@@ -17,9 +17,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.StringConverter;
 import model.Colaborador;
-import model.Coordenador;
 import model.Usuario;
 
 /**
@@ -29,8 +30,8 @@ import model.Usuario;
  */
 public class TelaRequerimentoController implements Initializable {
 
-    @FXML
-    private ChoiceBox<Coordenador> cbCoordenador;
+    private int flag=0;
+    
     @FXML
     private ChoiceBox<Colaborador> cbColaborador;
     @FXML
@@ -40,7 +41,7 @@ public class TelaRequerimentoController implements Initializable {
     @FXML
     private Button btnVoltar;
     @FXML
-    private Button btnCarregar;
+    private AnchorPane viewRequerimento;
 
     /**
      * Initializes the controller class.
@@ -48,29 +49,9 @@ public class TelaRequerimentoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
-    private void clearAll() {
-        this.cbColaborador.setValue(null);
-        this.cbCoordenador.setValue(null);
-        this.cbUsuario.setValue(null);
     }
-
-    @FXML
-    private void btnCarregarClick(ActionEvent event) {
-        this.cbCoordenador.getItems().setAll(CoordenadorDAO.listarCoordenadores());
-        this.cbCoordenador.setConverter(new StringConverter<Coordenador>() {
-            @Override
-            public String toString(Coordenador c) {
-                return c.getNome();
-            }
-
-            @Override
-            public Coordenador fromString(String string) {
-                return null;
-            }
-        });
-        
+    
+    private void carregar() {        
         this.cbColaborador.getItems().setAll(ColaboradorDAO.listarColaboradores());
         this.cbColaborador.setConverter(new StringConverter<Colaborador>() {
             @Override
@@ -98,11 +79,15 @@ public class TelaRequerimentoController implements Initializable {
         });
     }
     
+    private void clearAll() {
+        this.cbColaborador.setValue(null);
+        this.cbUsuario.setValue(null);
+    }
+    
     @FXML
     private void btnOkClick(ActionEvent event) {
         
         if(this.cbColaborador.getValue() == null ||
-                this.cbCoordenador.getValue() == null ||
                 this.cbUsuario.getValue() == null) {
             Alert errorAlert = new Alert(Alert.AlertType.WARNING);
             errorAlert.setTitle("Campo Vazio");
@@ -111,7 +96,7 @@ public class TelaRequerimentoController implements Initializable {
             return;
         }
         
-        RequerimentosDAO.novoRequerimento(this.cbCoordenador.getValue().getId(),
+        RequerimentosDAO.novoRequerimento(CoordenadorDAO.pesquisaID(TelaLoginController.verID()).getId(),
                 this.cbColaborador.getValue().getId(), 
                 this.cbUsuario.getValue().getIdusuario());
         this.clearAll();
@@ -119,9 +104,17 @@ public class TelaRequerimentoController implements Initializable {
 
     @FXML
     private void btnVoltarClick(ActionEvent event) {
-        ProjetoPOO.TrocaTela("inicialCoordenador");
         this.clearAll();
-        System.out.println("HEY");
+        this.flag = 0;
+        ProjetoPOO.TrocaTela("inicialCoordenador");
+    }
+
+    @FXML
+    private void viewEntered(MouseEvent event) {
+        if(flag==0) {
+            this.carregar();
+            flag++;
+        }
     }
     
 }

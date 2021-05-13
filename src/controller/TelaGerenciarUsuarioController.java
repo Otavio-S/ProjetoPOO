@@ -5,13 +5,9 @@
  */
 package controller;
 
-import dao.ColaboradorDAO;
-import dao.CoordenadorDAO;
 import dao.UsuarioDAO;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

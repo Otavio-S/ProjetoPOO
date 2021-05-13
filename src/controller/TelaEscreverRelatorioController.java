@@ -21,7 +21,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import model.Requerimento;
 
 /**
@@ -31,6 +32,8 @@ import model.Requerimento;
  */
 public class TelaEscreverRelatorioController implements Initializable {
 
+    private int flag = 0;
+    
     @FXML
     private Button btnVoltar;
     @FXML
@@ -48,7 +51,7 @@ public class TelaEscreverRelatorioController implements Initializable {
     @FXML
     private TableView<Requerimento> tableRequerimento;
     @FXML
-    private Button btnListar;
+    private AnchorPane viewEscrever;
 
     /**
      * Initializes the controller class.
@@ -97,14 +100,18 @@ public class TelaEscreverRelatorioController implements Initializable {
     }
 
     @FXML
-    private void btnListarClick(ActionEvent event) {
-        this.carregaTabela();
+    private void btnVoltarClick(ActionEvent event) {
+        this.clearAll();
+        this.flag = 0;
+        ProjetoPOO.TrocaTela("inicialColaborador");
     }
 
     @FXML
-    private void btnVoltarClick(ActionEvent event) {
-        ProjetoPOO.TrocaTela("inicialColaborador");
-        this.clearAll();
+    private void viewEscreverEntered(MouseEvent event) {
+        if(flag == 0) {
+            this.carregaTabela();
+            flag++;
+        }
     }
     
 }

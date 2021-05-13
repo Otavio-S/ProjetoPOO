@@ -24,6 +24,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import model.Relatorio;
 
 /**
@@ -33,6 +34,8 @@ import model.Relatorio;
  */
 public class TelaGerenciarRelatorioController implements Initializable {
 
+    private boolean flag = true;
+    
     @FXML
     private Button btnVoltar;
     @FXML
@@ -59,6 +62,8 @@ public class TelaGerenciarRelatorioController implements Initializable {
     private Button btnListarID;
     @FXML
     private Button btnAlterar;
+    @FXML
+    private AnchorPane viewGerenciar;
 
     /**
      * Initializes the controller class.
@@ -113,7 +118,6 @@ public class TelaGerenciarRelatorioController implements Initializable {
             return;
         }
         
-        this.clearAll();
         try {
             this.tableRelatorios.getItems().clear();
         } catch (Exception e) {
@@ -122,6 +126,7 @@ public class TelaGerenciarRelatorioController implements Initializable {
         ObservableList observable = FXCollections.observableArrayList(RelatoriosDAO.pesquisaID(this.edtID.getText()));
         this.tableRelatorios.setItems(observable);
         
+        this.clearAll();        
     }
 
     @FXML
@@ -154,7 +159,16 @@ public class TelaGerenciarRelatorioController implements Initializable {
 
     @FXML
     private void btnVoltarClick(ActionEvent event) {
+        this.flag = true;
         ProjetoPOO.TrocaTela("inicialGerente");
+    }
+
+    @FXML
+    private void viewGerenciarEntered(MouseEvent event) {
+        if(this.flag) {
+            this.carregaTabela();
+            this.flag = false;
+        }
     }
     
 }

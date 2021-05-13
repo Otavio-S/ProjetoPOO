@@ -24,6 +24,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import model.Relatorio;
 
 /**
@@ -57,6 +58,8 @@ public class TelaVisualizarRelatorioController implements Initializable {
     private TableView<Relatorio> tableRelatorios;
     @FXML
     private TextField edtIDUsuario;
+    @FXML
+    private AnchorPane viewVisualizarRelatorio;
 
     /**
      * Initializes the controller class.
@@ -111,7 +114,6 @@ public class TelaVisualizarRelatorioController implements Initializable {
             return;
         }
         
-        this.clearAll();
         try {
             this.tableRelatorios.getItems().clear();
         } catch (Exception e) {
@@ -120,6 +122,7 @@ public class TelaVisualizarRelatorioController implements Initializable {
         ObservableList observable = FXCollections.observableArrayList(RelatoriosDAO.pesquisaID(this.edtID.getText()));
         this.tableRelatorios.setItems(observable);
         
+        this.clearAll();
     }
 
     @FXML
@@ -139,6 +142,11 @@ public class TelaVisualizarRelatorioController implements Initializable {
     @FXML
     private void btnVoltarClick(ActionEvent event) {
         ProjetoPOO.TrocaTela("inicialCoordenador");
+    }
+
+    @FXML
+    private void viewEntered(MouseEvent event) {
+        this.carregaTabela();
     }
     
 }

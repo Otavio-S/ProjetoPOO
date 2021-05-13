@@ -5,6 +5,9 @@
  */
 package model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Otavio
@@ -14,29 +17,23 @@ public class ItemQuadroHorario implements Comparable< ItemQuadroHorario > {
     private String nome;
     private String descricao;
     private Hora horario;
+    private DiaSemana dia;
     private int duracao;
-    private int idGrupo;
+    private List<String> usuariosID;
+    private List<String> colaboradoresID;
 
-    public ItemQuadroHorario(int id, String nome, String descricao, int hora, int minuto, int duracao, int idGrupo) {
+    public ItemQuadroHorario(int id, String nome, String descricao, int hora, int minuto, int duracao, DiaSemana dia) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
         Hora h = new Hora(hora, minuto);
         this.horario = h;
+        this.dia = dia;
         this.duracao = duracao;
-        this.idGrupo = idGrupo;
+        usuariosID = new ArrayList<>();
+        colaboradoresID = new ArrayList<>();
     }
     
-    public ItemQuadroHorario(int id, String nome, String descricao, int hora, int minuto, int duracao) {
-        this.id = id;
-        this.nome = nome;
-        this.descricao = descricao;
-        Hora h = new Hora(hora, minuto);
-        this.horario = h;
-        this.duracao = duracao;
-        this.idGrupo = -1;
-    }
-
     public int getId() {
         return id;
     }
@@ -57,9 +54,35 @@ public class ItemQuadroHorario implements Comparable< ItemQuadroHorario > {
         return duracao;
     }
 
+    public DiaSemana getDia() {
+        return dia;
+    }
+
+    public String[] getUsuariosID() {
+        String[] u = new String[this.usuariosID.size()];
+        int i = 0;
+        for(String n : this.usuariosID) {
+            u[i] = n;
+            ++i;
+        }
+        return u;
+    }
+
+    public List getColaboradoresID() {
+        return colaboradoresID;
+    }
+    
+    public void inserirUsuario(String id) {
+        this.usuariosID.add(id);
+    }
+    
+    public void inserirColaborador(String id) {
+        this.colaboradoresID.add(id);
+    }
+
     @Override
     public String toString() {
-        return "ItemQuadroHorario{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", horario=" + horario + ", duracao=" + duracao + ", idGrupo=" + idGrupo + '}';
+        return "ItemQuadroHorario{" + "id=" + id + ", nome=" + nome + ", descricao=" + descricao + ", horario=" + horario + ", dia=" + dia + ", duracao=" + duracao + '}';
     }
     
     @Override

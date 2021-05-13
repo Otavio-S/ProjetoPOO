@@ -5,8 +5,6 @@
  */
 package model;
 
-import dao.QuadroHorario;
-
 /**
  *
  * @author Otavio
@@ -15,7 +13,6 @@ public class Coordenador extends Funcionario {
     
     private String local;
     private String tipo;
-    private QuadroHorario quadroHorario;
     
     public Coordenador(String idFuncionario, String nome, String CPF, 
             float salario, int cargaHoraria, Data dataNascimento, 
@@ -33,14 +30,6 @@ public class Coordenador extends Funcionario {
         return tipo;
     }
     
-    public void verQuadroHorario() {
-        
-    }
-    
-    public void editarQuadroHorario() {
-        
-    }
-
     @Override
     public String toString() {
         return super.toString() + "Coordenador{" + "local=" + local + ", tipo=" + tipo + '}';

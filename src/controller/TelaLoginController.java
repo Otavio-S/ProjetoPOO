@@ -17,7 +17,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -29,6 +28,8 @@ import javafx.scene.input.MouseEvent;
  */
 public class TelaLoginController implements Initializable {
 
+    private static String ID_ATUAL;
+    
     @FXML
     private TextField edtID;
     @FXML
@@ -44,6 +45,10 @@ public class TelaLoginController implements Initializable {
         // TODO
     }
     
+    public static String verID() {
+        return ID_ATUAL;
+    }
+    
     private void clearAll() {
         this.edtID.clear();
         this.edtSenha.clear();
@@ -51,6 +56,8 @@ public class TelaLoginController implements Initializable {
 
     @FXML
     private void btnEntrarClick(ActionEvent event) {
+        
+        ID_ATUAL = this.edtID.getText();
         
         if(this.edtID.getText().isEmpty() || this.edtSenha.getText().isEmpty()) {
             Alert errorAlert = new Alert(AlertType.WARNING);

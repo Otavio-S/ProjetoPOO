@@ -8,6 +8,7 @@ package dao;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import model.DiaSemana;
 import model.ItemQuadroHorario;
 
 /**
@@ -16,24 +17,17 @@ import model.ItemQuadroHorario;
  */
 public class QuadroHorario {
     
-    private static List<ItemQuadroHorario> quadro;
+    private static List<ItemQuadroHorario> quadro = new ArrayList<>();
     
     public void novoQuadroHorario() {
         quadro = new ArrayList<>();
     }
     
-    public boolean inserirItem(String nome, String descricao, int hora, int minuto, int duracao, int idGrupo) {
-        ItemQuadroHorario item = new ItemQuadroHorario(this.getMaiorID()+1, nome, descricao, hora, minuto, duracao, idGrupo);
+    public boolean inserirItem(String nome, String descricao, int hora, int minuto, int duracao, DiaSemana dia) {
+        ItemQuadroHorario item = new ItemQuadroHorario(this.getMaiorID()+1, nome, descricao, hora, minuto, duracao, dia);
         if(this.checarConflito(item)) return false;
         quadro.add(item);
         Collections.sort(quadro);
-        return true;
-    }
-    
-    public boolean inserirItem(String nome, String descricao, int hora, int minuto, int duracao) {
-        ItemQuadroHorario item = new ItemQuadroHorario(this.getMaiorID()+1, nome, descricao, hora, minuto, duracao);
-        if(this.checarConflito(item)) return false;
-        quadro.add(item);
         return true;
     }
     
@@ -64,6 +58,20 @@ public class QuadroHorario {
             }
         }
         return false;
+    }
+    
+    public static List<ItemQuadroHorario> visualizarQuadroHorario(String id) {
+        List horarioUsuario = new ArrayList<>();
+        
+        for(ItemQuadroHorario i : quadro) {
+            for(String idU : i.getUsuariosID()) {
+                if(idU.equals(id)) {
+                    horarioUsuario.add(i);
+                    break;
+                }
+            }
+        }
+        return horarioUsuario;
     }
     
     public static List<ItemQuadroHorario> visualizarQuadroHorario() {
