@@ -1,19 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaQuadroHorarioController">
+<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaQuadroHorarioController">
    <children>
       <Button fx:id="btnVoltar" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#btnVoltarClick" prefHeight="30.0" prefWidth="150.0" text="Voltar" />
-      <Label layoutX="423.0" layoutY="83.0" text="Quadro de Horário">
+      <Label layoutX="430.0" layoutY="83.0" text="Quadro de Horário">
          <font>
             <Font name="System Bold" size="40.0" />
          </font>
       </Label>
+      <TableView fx:id="tableQuadroHorario" layoutX="83.0" layoutY="170.0" onMousePressed="#tableCoordenadoresClick" prefHeight="441.0" prefWidth="1029.0">
+         <columns>
+            <TableColumn fx:id="columnID" prefWidth="102.0" text="ID" />
+            <TableColumn fx:id="columnNome" prefWidth="155.0" text="Nome" />
+            <TableColumn fx:id="columnDescricao" prefWidth="144.66668701171875" text="Descrição" />
+            <TableColumn fx:id="columnHora" prefWidth="117.33331298828125" text="Hora" />
+            <TableColumn fx:id="columnDIa" prefWidth="96.0" text="Dia" />
+            <TableColumn fx:id="columnDuracao" prefWidth="118.0" text="Duração" />
+            <TableColumn fx:id="columnUsuarios" prefWidth="136.3333740234375" text="Usuários" />
+            <TableColumn fx:id="columnColaboradores" prefWidth="163.6666259765625" text="Colaboradores" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>
