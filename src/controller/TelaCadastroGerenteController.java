@@ -8,7 +8,6 @@ package controller;
 import dao.GerenteDAO;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.Month;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +17,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 
 /**
  * FXML Controller class
@@ -25,6 +26,8 @@ import javafx.scene.control.TextField;
  * @author Otavio
  */
 public class TelaCadastroGerenteController implements Initializable {
+    
+    private boolean flag = true;
 
     @FXML
     private TextField edtID;
@@ -45,9 +48,9 @@ public class TelaCadastroGerenteController implements Initializable {
     @FXML
     private Button btnVoltar;
     @FXML
-    private Button btnCarregar;
-    @FXML
     private Label lblTitulo;
+    @FXML
+    private AnchorPane viewCadastro;
 
     /**
      * Initializes the controller class.
@@ -55,7 +58,6 @@ public class TelaCadastroGerenteController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        this.btnCarregar.setVisible(false);
         this.btnVoltar.setVisible(false);
     }
     
@@ -91,9 +93,9 @@ public class TelaCadastroGerenteController implements Initializable {
                 this.edtSenha.getText());
         
         this.btnCadastrar.setText("Atualizar");
-        this.btnCarregar.setVisible(true);
         this.btnVoltar.setVisible(true);
         this.lblTitulo.setText("Dados Gerente");
+        this.flag = true;
         this.clearAll();
         ProjetoPOO.TrocaTela("login");
     }
@@ -105,18 +107,23 @@ public class TelaCadastroGerenteController implements Initializable {
     }
 
     @FXML
-    private void btnCarregarClick(ActionEvent event) {
-        this.edtCPF.setText(GerenteDAO.verGerente().getCPF());
-        this.edtCargaHoraria.setText(String.valueOf(GerenteDAO.verGerente().getCargaHoraria()));
-        this.edtID.setText(String.valueOf(GerenteDAO.verGerente().getId()));
-        this.edtNome.setText(GerenteDAO.verGerente().getNome());
-        this.edtSalario.setText(String.valueOf(GerenteDAO.verGerente().getSalario()));
-        this.edtSenha.setText(GerenteDAO.verGerente().getSenhaAcesso());
-        this.edtDataNascimento.setValue(LocalDate.of(
-                GerenteDAO.verGerente().getDataNascimento().getAno(), 
-                GerenteDAO.verGerente().getDataNascimento().getMes(),
-                GerenteDAO.verGerente().getDataNascimento().getDia()));
-        
+    private void viewCadastroEntered(MouseEvent event) {
+        if(flag) {
+            try {
+                this.edtCPF.setText(GerenteDAO.verGerente().getCPF());
+                this.edtCargaHoraria.setText(String.valueOf(GerenteDAO.verGerente().getCargaHoraria()));
+                this.edtID.setText(String.valueOf(GerenteDAO.verGerente().getId()));
+                this.edtNome.setText(GerenteDAO.verGerente().getNome());
+                this.edtSalario.setText(String.valueOf(GerenteDAO.verGerente().getSalario()));
+                this.edtSenha.setText(GerenteDAO.verGerente().getSenhaAcesso());
+                this.edtDataNascimento.setValue(LocalDate.of(
+                        GerenteDAO.verGerente().getDataNascimento().getAno(), 
+                        GerenteDAO.verGerente().getDataNascimento().getMes(),
+                        GerenteDAO.verGerente().getDataNascimento().getDia()));
+            } catch (NullPointerException e) {
+            }
+            this.flag = false;
+        }
     }
     
 }

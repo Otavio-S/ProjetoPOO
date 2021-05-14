@@ -45,12 +45,14 @@ public class CoordenadorDAO {
         return false;
     }
     
-    public static void atualizarSalarioCoordenador(String idCoordenador, float salario) {
+    public static boolean atualizarSalarioCoordenador(String idCoordenador, float salario) {
         for(Coordenador c : coordenadores) {
             if(c.getId().equals(idCoordenador)) {
                 c.atualizarSalario(salario);
+                return true;
             }
         }
+        return false;
     }
     
     public static Coordenador pesquisa(String nome) {

@@ -14,14 +14,14 @@ public class Requerimento {
     private String idCoordenador;
     private String idColaborador;
     private String idUsuario;
-    private int status;
+    private boolean status;
 
     public Requerimento(int idRequerimento, String idCoordenador, String idColaborador, String idUsuario) {
         this.idRequerimento = idRequerimento;
         this.idCoordenador = idCoordenador;
         this.idColaborador = idColaborador;
         this.idUsuario = idUsuario;
-        this.status = 1;
+        this.status = true;
     }
 
     public int getIdRequerimento() {
@@ -40,12 +40,12 @@ public class Requerimento {
         return idUsuario;
     }
 
-    public int getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public void alterarStatus() {
+        this.status = false;
     }
     
     

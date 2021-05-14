@@ -35,11 +35,21 @@ public class RequerimentosDAO {
     public static boolean alteraStatus(int idRequerimento) {
        for(Requerimento r : requerimentos) {
             if(r.getIdRequerimento() == idRequerimento) {
-                r.setStatus(0);
+                r.alterarStatus();
                 return true;
             }
         }
        return false;
+    }
+    
+    public static List<Requerimento> listarRequerimentos(String id) {
+        List<Requerimento> reqs = new ArrayList<>();
+        for(Requerimento r : requerimentos) {
+            if(r.getIdColaborador().equals(id) && r.getStatus()) {
+                reqs.add(r);
+            }
+        }
+        return reqs;
     }
     
     public static List<Requerimento> listarRequerimentos() {

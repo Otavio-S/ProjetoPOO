@@ -99,6 +99,12 @@ public class TelaRequerimentoController implements Initializable {
         RequerimentosDAO.novoRequerimento(CoordenadorDAO.pesquisaID(TelaLoginController.verID()).getId(),
                 this.cbColaborador.getValue().getId(), 
                 this.cbUsuario.getValue().getIdusuario());
+        
+        Alert errorAlert = new Alert(Alert.AlertType.CONFIRMATION);
+        errorAlert.setTitle("Sucesso");
+        errorAlert.setHeaderText("Requerimento Inserido com Sucesso!");
+        errorAlert.showAndWait();
+        
         this.clearAll();
     }
 

@@ -127,8 +127,20 @@ public class TelaGerenciarUsuarioController implements Initializable {
                 this.edtDataNascimento.getValue().getMonthValue(),
                 this.edtDataNascimento.getValue().getYear(),
                 this.edtSenha.getText());
-        if(res) System.out.println("Sucessso Cadastro Usuario!");
-        else return;
+        if(res) {
+            Alert errorAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            errorAlert.setTitle("Sucesso ao Cadastrar");
+            errorAlert.setHeaderText("Usuário Inserido com Sucesso!");
+            errorAlert.showAndWait();
+            System.out.println("Sucessso Cadastro Usuario!");
+        } else {
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setTitle("Erro ao Cadastrar");
+            errorAlert.setHeaderText("Usuário não foi cadastrado!");
+            errorAlert.setContentText("O ID informado já existe.");
+            errorAlert.showAndWait();
+            return;
+        }
         
         this.carregaTabela();
     }
@@ -153,7 +165,21 @@ public class TelaGerenciarUsuarioController implements Initializable {
             return;
         }
         
-        UsuarioDAO.atualizarSenhaUsuario(this.edtID.getText(), this.edtSenha.getText());
+        boolean res = UsuarioDAO.atualizarSenhaUsuario(this.edtID.getText(), this.edtSenha.getText());
+        
+        if(res) {
+            Alert errorAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            errorAlert.setTitle("Senha Atualizada");
+            errorAlert.setHeaderText("Senha Atualizada com Sucesso!");
+            errorAlert.showAndWait();
+        } else {
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setTitle("Erro ao Atualizar");
+            errorAlert.setHeaderText("Senha não foi atualizada!");
+            errorAlert.setContentText("O ID informado não existe.");
+            errorAlert.showAndWait();
+            return;
+        }
         
         this.carregaTabela();
     }
@@ -169,7 +195,21 @@ public class TelaGerenciarUsuarioController implements Initializable {
             return;
         }
         
-        UsuarioDAO.removerUsuario(this.edtID.getText());
+        boolean res = UsuarioDAO.removerUsuario(this.edtID.getText());
+        
+        if(res) {
+            Alert errorAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            errorAlert.setTitle("Usuário Removido");
+            errorAlert.setHeaderText("Usuário Excluído com Sucesso!");
+            errorAlert.showAndWait();
+        } else {
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setTitle("Erro ao Excluir");
+            errorAlert.setHeaderText("Usuário não foi excluído!");
+            errorAlert.setContentText("O ID informado não existe.");
+            errorAlert.showAndWait();
+            return;
+        }
         
         this.carregaTabela();
     }

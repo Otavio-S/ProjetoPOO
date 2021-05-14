@@ -7,7 +7,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaCadastroGerenteController">
+<AnchorPane id="AnchorPane" fx:id="viewCadastro" onMouseEntered="#viewCadastroEntered" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.TelaCadastroGerenteController">
    <children>
       <Label fx:id="lblTitulo" layoutX="408.0" layoutY="94.0" text="Cadastro de Gerente">
          <font>
@@ -45,8 +45,7 @@
             <TextField fx:id="edtSenha" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>
       </GridPane>
-      <Button fx:id="btnCadastrar" layoutX="676.0" layoutY="576.0" mnemonicParsing="false" onAction="#btnCadastrarClick" prefHeight="45.0" prefWidth="120.0" text="Cadastrar" />
-      <Button fx:id="btnVoltar" layoutX="404.0" layoutY="576.0" mnemonicParsing="false" onAction="#btnVoltarClick" prefHeight="45.0" prefWidth="120.0" text="Voltar" />
-      <Button fx:id="btnCarregar" layoutX="540.0" layoutY="576.0" mnemonicParsing="false" onAction="#btnCarregarClick" prefHeight="45.0" prefWidth="120.0" text="Carregar" />
+      <Button fx:id="btnCadastrar" layoutX="525.0" layoutY="565.0" mnemonicParsing="false" onAction="#btnCadastrarClick" prefHeight="40.0" prefWidth="150.0" text="Cadastrar" />
+      <Button fx:id="btnVoltar" layoutX="20.0" layoutY="20.0" mnemonicParsing="false" onAction="#btnVoltarClick" prefHeight="30.0" prefWidth="150.0" text="Voltar" />
    </children>
 </AnchorPane>

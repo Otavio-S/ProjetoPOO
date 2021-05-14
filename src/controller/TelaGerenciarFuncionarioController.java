@@ -203,8 +203,20 @@ public class TelaGerenciarFuncionarioController implements Initializable {
                     this.edtLocal.getText(),
                     this.edtSenha.getText(),
                     this.cbTipo.getValue());
-            if(res) System.out.println("Sucessso Colaborador!");
-            else return;
+            if(res) {
+                Alert errorAlert = new Alert(Alert.AlertType.CONFIRMATION);
+                errorAlert.setTitle("Sucesso ao Cadastrar");
+                errorAlert.setHeaderText("Colaborador Inserido com Sucesso!");
+                errorAlert.showAndWait();
+                System.out.println("Sucessso Cadastro Colaborador!");
+            } else {
+                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                errorAlert.setTitle("Erro ao Cadastrar");
+                errorAlert.setHeaderText("Colaborador não foi cadastrado!");
+                errorAlert.setContentText("O ID informado já existe.");
+                errorAlert.showAndWait();
+                return;
+            }
         } else if(this.cbTipo.getValue().equals("Coordenador")) {
             boolean res = CoordenadorDAO.inserirCoordenador(this.edtID.getText(),
                     this.edtNome.getText(),
@@ -217,8 +229,20 @@ public class TelaGerenciarFuncionarioController implements Initializable {
                     this.edtLocal.getText(),
                     this.edtSenha.getText(),
                     this.cbTipo.getValue());
-            if(res) System.out.println("Sucessso Coordenador!");
-            else return;
+            if(res) {
+                Alert errorAlert = new Alert(Alert.AlertType.CONFIRMATION);
+                errorAlert.setTitle("Sucesso ao Cadastrar");
+                errorAlert.setHeaderText("Coordenador Inserido com Sucesso!");
+                errorAlert.showAndWait();
+                System.out.println("Sucessso Cadastro Coordenador!");
+            } else {
+                Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+                errorAlert.setTitle("Erro ao Cadastrar");
+                errorAlert.setHeaderText("Coordenador não foi cadastrado!");
+                errorAlert.setContentText("O ID informado já existe.");
+                errorAlert.showAndWait();
+                return;
+            }
         }
         this.carregaTabela();
     }
@@ -241,8 +265,35 @@ public class TelaGerenciarFuncionarioController implements Initializable {
             errorAlert.showAndWait();
             return;
         }
-        CoordenadorDAO.atualizarSalarioCoordenador(this.edtID.getText(), Float.valueOf(this.edtSalario.getText()));
-        ColaboradorDAO.atualizarSalarioColaborador(this.edtID.getText(), Float.valueOf(this.edtSalario.getText()));
+        
+        boolean res;
+        res = CoordenadorDAO.atualizarSalarioCoordenador(this.edtID.getText(), Float.valueOf(this.edtSalario.getText()));
+        
+        if(res) {
+            Alert errorAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            errorAlert.setTitle("Sucesso ao Atualizar Salário");
+            errorAlert.setHeaderText("Salário do Coordenador foi atualizado com Sucesso!");
+            errorAlert.showAndWait();
+            this.carregaTabela();
+            return;
+        }
+        
+        res = ColaboradorDAO.atualizarSalarioColaborador(this.edtID.getText(), Float.valueOf(this.edtSalario.getText()));
+        
+        if(res) {
+            Alert errorAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            errorAlert.setTitle("Sucesso ao Atualizar Salário");
+            errorAlert.setHeaderText("Salário do Colaborador foi atualizado com Sucesso!");
+            errorAlert.showAndWait();
+        } else if(!res) {
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setTitle("Erro ao Atualizar Salário");
+            errorAlert.setHeaderText("Salário não foi atualizado!");
+            errorAlert.setContentText("ID informado não existe.");
+            errorAlert.showAndWait();
+            return;
+        }
+        
         this.carregaTabela();
     }
 
@@ -257,8 +308,33 @@ public class TelaGerenciarFuncionarioController implements Initializable {
             return;
         }
         
-        ColaboradorDAO.removerColaborador(this.edtID.getText());
+        boolean res;
+        res = ColaboradorDAO.removerColaborador(this.edtID.getText());
+        
+        if(res) {
+            Alert errorAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            errorAlert.setTitle("Colaborador Removido");
+            errorAlert.setHeaderText("Colaborador Excluído com Sucesso!");
+            errorAlert.showAndWait();
+            this.carregaTabela();
+            return;
+        }
+        
         CoordenadorDAO.removerCoordenador(this.edtID.getText());
+        
+        if(res) {
+            Alert errorAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            errorAlert.setTitle("Coordenador Removido");
+            errorAlert.setHeaderText("Coordenador Excluído com Sucesso!");
+            errorAlert.showAndWait();
+        } else {
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setTitle("Erro ao Remover");
+            errorAlert.setHeaderText("Funcionário não foi removido!");
+            errorAlert.setContentText("ID informado não existe.");
+            errorAlert.showAndWait();
+            return;
+        }
         
         this.carregaTabela();
     }

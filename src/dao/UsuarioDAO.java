@@ -37,12 +37,14 @@ public class UsuarioDAO {
         return false;
     }
     
-    public static void atualizarSenhaUsuario(String idUsuario, String senha) {
+    public static boolean atualizarSenhaUsuario(String idUsuario, String senha) {
         for(Usuario u : usuarios) {
             if(u.getIdusuario().equals(idUsuario)) {
                 u.alterarSenha(senha);
+                return true;
             }
         }
+        return false;
     }
     
     public static Usuario pesquisa(String nome) {

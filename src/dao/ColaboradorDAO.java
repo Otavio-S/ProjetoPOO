@@ -45,12 +45,14 @@ public class ColaboradorDAO {
         return false;
     }
     
-    public static void atualizarSalarioColaborador(String idColaborador, float salario) {
+    public static boolean atualizarSalarioColaborador(String idColaborador, float salario) {
         for(Colaborador c : colaboradores) {
             if(c.getId().equals(idColaborador)) {
                 c.atualizarSalario(salario);
+                return true;
             }
         }
+        return false;
     }
     
     public static Colaborador pesquisa(String nome) {

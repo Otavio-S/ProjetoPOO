@@ -19,11 +19,11 @@
          <children>
             <Label text="ID Relatório:" />
             <Label text="ID Usuário:" GridPane.rowIndex="1" />
-            <TextField fx:id="edtID" GridPane.columnIndex="1" />
-            <TextField fx:id="edtIDUsuario" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="edtID" editable="false" GridPane.columnIndex="1" />
+            <TextField fx:id="edtIDUsuario" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Descrição:" GridPane.rowIndex="3" />
             <Label text="Data:" GridPane.rowIndex="2" />
-            <DatePicker fx:id="edtData" prefHeight="31.0" prefWidth="390.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <DatePicker fx:id="edtData" editable="false" prefHeight="31.0" prefWidth="390.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <TextArea fx:id="edtDesc" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
          <columnConstraints>

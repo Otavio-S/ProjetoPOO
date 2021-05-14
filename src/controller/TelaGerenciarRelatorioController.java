@@ -6,6 +6,7 @@
 package controller;
 
 import dao.RelatoriosDAO;
+import dao.RequerimentosDAO;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -150,11 +151,22 @@ public class TelaGerenciarRelatorioController implements Initializable {
             this.clearAll();
             Alert errorAlert = new Alert(Alert.AlertType.WARNING);
             errorAlert.setTitle("Campo Vazio");
-            errorAlert.setHeaderText("Preencha o ID e a Descrição!");
+            errorAlert.setHeaderText("Selecione um Relatório para editar!");
             errorAlert.showAndWait();
             return;
         }
-        RelatoriosDAO.atualizarRelatorio(this.edtID.getText(), this.edtDesc.getText());
+        
+        if(RelatoriosDAO.pesquisaID(this.edtID.getText()) == null) {
+            this.clearAll();
+            Alert errorAlert = new Alert(Alert.AlertType.WARNING);
+            errorAlert.setTitle("Relatório não exite");
+            errorAlert.setHeaderText("Selecione um relatório válido para editar!");
+            errorAlert.showAndWait();
+            return;
+        }
+        
+        RelatoriosDAO.atualizarRelatorio(this.edtID.getText(), this.edtDesc.getText());        
+        this.carregaTabela();
     }
 
     @FXML

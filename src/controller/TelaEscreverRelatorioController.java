@@ -32,7 +32,8 @@ import model.Requerimento;
  */
 public class TelaEscreverRelatorioController implements Initializable {
 
-    private int flag = 0;
+    private boolean flag = true;
+    private Requerimento r;
     
     @FXML
     private Button btnVoltar;
@@ -79,7 +80,7 @@ public class TelaEscreverRelatorioController implements Initializable {
         } catch (Exception erro) {
         }
         
-        ObservableList observableList = FXCollections.observableArrayList(RequerimentosDAO.listarRequerimentos());
+        ObservableList observableList = FXCollections.observableArrayList(RequerimentosDAO.listarRequerimentos(TelaLoginController.verID()));
         this.tableRequerimento.setItems(observableList);
         
     }
@@ -95,22 +96,51 @@ public class TelaEscreverRelatorioController implements Initializable {
             return;
         }
         
-        RelatoriosDAO.novoRelatorio(this.edtIDUsuario.getText(), this.edtDesc.getText());
+        boolean res;
+        res = RequerimentosDAO.alteraStatus(this.r.getIdRequerimento());
+        if(res) {
+            RelatoriosDAO.novoRelatorio(this.edtIDUsuario.getText(), this.edtDesc.getText());
+            Alert errorAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            errorAlert.setTitle("Sucesso ao Enviar Relatório");
+            errorAlert.setHeaderText("Relatório Enviado com Sucesso!");
+            errorAlert.showAndWait();
+        } else {
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setTitle("Erro ao Enviar");
+            errorAlert.setHeaderText("Erro ao Enviar Relatório!");
+            errorAlert.setContentText("Selecione o Requerimento a ser respondido.");
+            errorAlert.showAndWait();
+            return;
+        }
         this.clearAll();
+        this.carregaTabela();
     }
 
     @FXML
     private void btnVoltarClick(ActionEvent event) {
         this.clearAll();
-        this.flag = 0;
+        try {
+            this.tableRequerimento.getItems().clear();
+        } catch (Exception erro) {
+        }
+        this.flag = true;
         ProjetoPOO.TrocaTela("inicialColaborador");
     }
 
     @FXML
     private void viewEscreverEntered(MouseEvent event) {
-        if(flag == 0) {
+        if(flag) {
             this.carregaTabela();
-            flag++;
+            flag = false;
+        }
+    }
+
+    @FXML
+    private void tableRequerimentoClick(MouseEvent event) {
+        this.r = this.tableRequerimento.getSelectionModel().getSelectedItem();
+        int selectedIndex = this.tableRequerimento.getSelectionModel().getSelectedIndex();
+        if (selectedIndex >= 0) {
+            this.edtIDUsuario.setText(this.r.getIdUsuario());
         }
     }
     
