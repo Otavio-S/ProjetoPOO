@@ -42,6 +42,7 @@ public class TelaGerenteController implements Initializable {
 
     @FXML
     private void btnQuadroClick(ActionEvent event) {
+        ProjetoPOO.TrocaTela("quadroHorario");
     }
 
     @FXML

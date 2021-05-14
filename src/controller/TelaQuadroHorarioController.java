@@ -59,7 +59,7 @@ public class TelaQuadroHorarioController implements Initializable {
 
     @FXML
     private void btnVoltarClick(ActionEvent event) {
-        ProjetoPOO.TrocaTela("inicialColaborador");
+        ProjetoPOO.TrocaTela("");
     }
 
     @FXML
