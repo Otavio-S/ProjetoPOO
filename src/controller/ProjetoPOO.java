@@ -34,6 +34,7 @@ public class ProjetoPOO extends Application {
     
     private static Scene cenaInicialColaborador;
     private static Scene cenaEscreverRelatorio;
+    private static Scene cenaVisualizarQuadroHorario;
     
     private static Scene cenaInicialUsuario;
     
@@ -91,6 +92,10 @@ public class ProjetoPOO extends Application {
         telaEscreverRelatorio = FXMLLoader.load(getClass().getResource("/view/TelaEscreverRelatorio.fxml"));
         cenaEscreverRelatorio = new Scene(telaEscreverRelatorio);
         
+        Parent telaVisualizar;
+        telaVisualizar = FXMLLoader.load(getClass().getResource("/view/TelaVisualizarQuadroHorario.fxml"));
+        cenaVisualizarQuadroHorario = new Scene(telaVisualizar);
+        
         Parent telaInicialUsuario;
         telaInicialUsuario = FXMLLoader.load(getClass().getResource("/view/TelaUsuario.fxml"));
         cenaInicialUsuario = new Scene(telaInicialUsuario);
@@ -147,6 +152,10 @@ public class ProjetoPOO extends Application {
                 break;
             case "escreverRelatorio":
                 stage.setScene(cenaEscreverRelatorio);
+                stage.centerOnScreen();
+                break;
+            case "visualizarQuadro":
+                stage.setScene(cenaVisualizarQuadroHorario);
                 stage.centerOnScreen();
                 break;
             case "inicialUsuario":

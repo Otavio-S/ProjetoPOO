@@ -46,7 +46,7 @@ public class TelaColaboradorController implements Initializable {
 
     @FXML
     private void btnVisualizarHorariosClick(ActionEvent event) {
-        ProjetoPOO.TrocaTela("quadroHorario");
+        ProjetoPOO.TrocaTela("visualizarQuadro");
     }
     
 }

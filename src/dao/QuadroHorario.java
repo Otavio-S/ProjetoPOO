@@ -87,6 +87,20 @@ public class QuadroHorario {
         return false;
     }
     
+    public static List<ItemQuadroHorario> visualizarQuadroHorarioColaborador(String id) {
+        List horarioColaborador = new ArrayList<>();
+        
+        for(ItemQuadroHorario i : quadro) {
+            for(String idC : i.getColaboradoresID()) {
+                if(idC.equals(id)) {
+                    horarioColaborador.add(i);
+                    break;
+                }
+            }
+        }
+        return horarioColaborador;
+    }
+    
     public static List<ItemQuadroHorario> visualizarQuadroHorario(String id) {
         List horarioUsuario = new ArrayList<>();
         
