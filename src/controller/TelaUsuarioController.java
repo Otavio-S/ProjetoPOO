@@ -80,6 +80,10 @@ public class TelaUsuarioController implements Initializable {
     @FXML
     private void btnDeslogarClick(ActionEvent event) {
         this.flag = true;
+        try {
+            this.tableHorarios.getItems().clear();
+        } catch (Exception erro) {
+        }
         ProjetoPOO.TrocaTela("login");
     }
 

@@ -23,15 +23,22 @@ public class QuadroHorario {
         quadro = new ArrayList<>();
     }
     
-    public boolean inserirItem(String nome, String descricao, int hora, int minuto, int duracao, DiaSemana dia) {
-        ItemQuadroHorario item = new ItemQuadroHorario(this.getMaiorID()+1, nome, descricao, hora, minuto, duracao, dia);
-        if(this.checarConflito(item)) return false;
+    public static void inserirItem(String nome, String descricao, int hora, int minuto, int hDuracao, int mDuracao, DiaSemana dia, String idColaborador) {
+        ItemQuadroHorario item = new ItemQuadroHorario(QuadroHorario.getMaiorID()+1, nome, descricao, hora, minuto, hDuracao, mDuracao, dia, idColaborador);
+        // if(QuadroHorario.checarConflito(item)) return false;
         quadro.add(item);
         Collections.sort(quadro);
-        return true;
     }
     
-    private boolean checarConflito(ItemQuadroHorario item) {
+    public static void inserirItem(String nome, String descricao, int hora, int minuto, int hDuracao, int mDuracao, DiaSemana dia, String idUsuario, String idColaborador) {
+        ItemQuadroHorario item = new ItemQuadroHorario(QuadroHorario.getMaiorID()+1, nome, descricao, hora, minuto, hDuracao, mDuracao, dia, idColaborador);
+        item.inserirUsuario(idUsuario);
+        // if(QuadroHorario.checarConflito(item)) return false;
+        quadro.add(item);
+        Collections.sort(quadro);
+    }
+    
+    private static boolean checarConflito(ItemQuadroHorario item) {
         for(ItemQuadroHorario i : quadro) {
             if(ItemQuadroHorario.hasConflict(i, item)) {
                 return true;
@@ -40,7 +47,7 @@ public class QuadroHorario {
         return false;
     }
     
-    private int getMaiorID() {
+    private static int getMaiorID() {
         int id=0;
         for(ItemQuadroHorario i : quadro) {
             if(i.getId()>id) {
@@ -50,7 +57,27 @@ public class QuadroHorario {
         return id;
     }
     
-    public boolean removerItem(int id) {
+    public static boolean inserirUsuario(int idItem, String idUsuario) {
+        for(ItemQuadroHorario i : quadro) {
+            if(i.getId() == idItem) {
+                boolean res = i.inserirUsuario(idUsuario);
+                return res;
+            }
+        }
+        return false;
+    }
+    
+    public static List<ItemQuadroHorario> pesquisar(String nome) {
+        List horarioNome = new ArrayList<>();
+        for(ItemQuadroHorario i : quadro) {
+            if(i.getNome().equals(nome)) {
+                horarioNome.add(i);
+            }
+        }
+        return horarioNome;
+    }
+    
+    public static boolean removerItem(int id) {
         for(ItemQuadroHorario i : quadro) {
             if(i.getId() == id) {
                 quadro.remove(i);

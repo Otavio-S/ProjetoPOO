@@ -258,7 +258,7 @@ public class TelaGerenciarUsuarioController implements Initializable {
         
         ObservableList observable = FXCollections.observableArrayList(UsuarioDAO.pesquisa(this.edtNome.getText()));
         this.tableUsuarios.setItems(observable);
-        
+        this.clearAll();
     }
 
     @FXML

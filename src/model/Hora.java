@@ -43,6 +43,27 @@ public class Hora implements Cloneable, Comparable<Hora> {
 
     @Override
     public String toString() {
+        if(hora>0 && hora<10 && minuto>0 && minuto<10) {
+            return "0"+hora+":0"+minuto;
+        }
+        if(hora>0 && hora<10 && minuto==0) {
+            return "0"+hora+":00";
+        }
+        if(hora>0 && hora<10) {
+            return "0"+hora+":"+minuto;
+        }
+        if(minuto>0 && minuto<10 && hora==0) {
+            return "00:0"+minuto;
+        }
+        if(minuto>0 && minuto<10) {
+            return hora+":0"+minuto;
+        }
+        if(hora == 0) {
+            return "00:"+minuto;
+        }
+        if (minuto == 0) {
+        return hora + ":00";
+        }
         return hora + ":" + minuto;
     }
     
