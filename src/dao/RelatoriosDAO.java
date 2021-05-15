@@ -34,7 +34,7 @@ public class RelatoriosDAO {
         }
     }
     
-    private static int getMaiorID() {
+    static int getMaiorID() {
         int id=0;
         for(Relatorio r : relatorios) {
             if(Integer.valueOf(r.getIdRelatorio()) > id) {

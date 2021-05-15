@@ -10,23 +10,23 @@ package model;
  * @author Otavio
  */
 public class Prontuario {
-    private int idProntuario;
-    private int idUsuario;
+    private String idProntuario;
+    private String idUsuario;
     private Data data;
     private String descricao;
 
-    public Prontuario(int idProntuario, int idUsuario, Data data, String descricao) {
+    public Prontuario(String idProntuario, String idUsuario, Data data, String descricao) {
         this.idProntuario = idProntuario;
         this.idUsuario = idUsuario;
         this.data = data;
         this.descricao = descricao;
     }
 
-    public int getIdProntuario() {
+    public String getIdProntuario() {
         return idProntuario;
     }
 
-    public int getIdUsuario() {
+    public String getIdUsuario() {
         return idUsuario;
     }
 
@@ -36,6 +36,10 @@ public class Prontuario {
 
     public String getDescricao() {
         return descricao;
+    }
+    
+    public void alterarDescricao(String desc) {
+        this.descricao = desc;
     }
 
     @Override
