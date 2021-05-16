@@ -52,7 +52,7 @@ public class GrupoAtividadeDAO {
         }
     }
     
-    public void alterarHoraInicio(int idGrupo, DiaSemana novoDiaSemana){
+    public void alterarDiaSemana(int idGrupo, DiaSemana novoDiaSemana){
         for(GrupoAtividade g :listaGrupoAtividades){
             if(g.getIdGrupo() == idGrupo){
                 g.setDiaSemana(novoDiaSemana);
